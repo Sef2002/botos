@@ -22,45 +22,45 @@ const ShopPage: React.FC = () => {
 
   const products = [
     {
+      name: "Shampoo Professionale",
+      description: "Shampoo nutriente per capelli trattati",
+      price: "22,00",
+      image: "/ilsaloneassets/saloneproduct1.png",
+      category: "Shampoo"
+    },
+    {
       name: "Balsamo Idratante",
       description: "Balsamo professionale per capelli setosi",
       price: "26,00",
-      image: "/assets/product1.png",
+      image: "/ilsaloneassets/saloneproduct2.png",
       category: "Balsamo"
     },
     {
       name: "Gel Modellante",
       description: "Gel a tenuta forte per styling duraturo",
       price: "24,00",
-      image: "/assets/product2.png",
+      image: "/ilsaloneassets/saloneproduct3.png",
       category: "Styling"
     },
     {
       name: "Pomata Opaca",
       description: "Pomata modellante effetto opaco",
       price: "28,00",
-      image: "/assets/product3.png",
+      image: "/ilsaloneassets/saloneproduct4.png",
       category: "Styling"
-    },
-    {
-      name: "Shampoo Professionale",
-      description: "Shampoo nutriente per capelli trattati",
-      price: "22,00",
-      image: "https://images.pexels.com/photos/6621462/pexels-photo-6621462.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      category: "Shampoo"
     },
     {
       name: "Maschera Ristrutturante",
       description: "Trattamento intensivo per capelli danneggiati",
       price: "28,00",
-      image: "https://images.pexels.com/photos/6621424/pexels-photo-6621424.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      image: "/ilsaloneassets/saloneproduct5.png",
       category: "Trattamenti"
     },
     {
       name: "Olio di Argan",
       description: "Olio nutriente per capelli secchi",
       price: "32,00",
-      image: "https://images.pexels.com/photos/4465124/pexels-photo-4465124.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      image: "/ilsaloneassets/saloneproduct6.png",
       category: "Oli"
     }
   ];

@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex justify-between items-center bg-[#1b1b1b] rounded-[40px] px-8 py-4">
           <NavLink to="/" className="text-2xl font-heading text-white">
-            <img src="/assets/logo.png" alt="Bato's Logo" className="h-12" />
+            <img src="/ilsaloneassets/logo.png" alt="IL SALONE Logo" className="h-12" />
           </NavLink>
 
           {/* Desktop Menu */}

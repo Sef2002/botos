@@ -16,6 +16,7 @@ const HomePage: React.FC = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
+    // Trigger once for elements in initial view
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
@@ -25,16 +26,16 @@ const HomePage: React.FC = () => {
     <main>
       {/* Hero Section */}
       <section className="h-screen relative flex items-center">
-        <div className="absolute inset-0 bg-brand">
+        <div className="absolute inset-0 bg-black">
           <div 
             className="absolute inset-0 bg-center bg-cover opacity-50"
-            style={{ backgroundImage: "url('/ilsaloneassets/salonesalone.png')" }}
+            style={{ backgroundImage: "url('/assets/background.png')" }}
           ></div>
         </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-heading font-bold mb-2 fade-in" style={{ '--delay': '100ms' } as React.CSSProperties}>
-              IL SALONE
+              BATO'S<br />PARRUCCHIERI
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 mb-4 max-w-xl fade-in" style={{ '--delay': '200ms' } as React.CSSProperties}>
               Ci dedichiamo ogni giorno a valorizzare ogni sfumatura del tuo stile.
@@ -49,13 +50,13 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-brand">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div className="fade-in">
               <h2 className="section-title">La Nostra Storia</h2>
               <p className="text-gray-300 mb-8">
-                Nel cuore di Treviglio, in Viale M. Buonarroti 7, IL SALONE è il punto di riferimento per chi desidera un'esperienza esclusiva, dove la cura del capello si unisce al relax e all'eleganza.
+                Nel Centro Commerciale di Caravaggio, in Via Treviglio 25, Bato's Parrucchieri è il punto di riferimento per chi desidera un'esperienza esclusiva, dove la cura del capello si unisce al relax e all'eleganza.
               </p>
               <p className="text-gray-300 mb-8">
                 Ogni servizio è studiato per valorizzare la tua immagine con trattamenti di alta qualità, dalle colorazioni raffinate ai tagli su misura, fino ai rituali di benessere che rigenerano e illuminano la chioma. Il nostro team di hairstylist esperti ti guiderà nella scelta del look perfetto, con attenzione ai dettagli e un approccio innovativo.
@@ -64,24 +65,24 @@ const HomePage: React.FC = () => {
             <div className="grid grid-cols-2 gap-4 fade-in">
               <div className="space-y-4">
                 <img 
-                  src="/ilsaloneassets/salonesalone1.png" 
-                  alt="Il Salone al lavoro" 
+                  src="/assets/image1.png" 
+                  alt="Bato's al lavoro" 
                   className="w-full h-48 sm:h-64 object-cover"
                 />
                 <img 
-                  src="/ilsaloneassets/salonesalone2.png" 
+                  src="/assets/image2.png" 
                   alt="Strumenti professionali" 
                   className="w-full h-48 sm:h-80 object-cover"
                 />
               </div>
               <div className="space-y-4 mt-8">
                 <img 
-                  src="/ilsaloneassets/salonesalone3.png" 
+                  src="/assets/image3.png" 
                   alt="Cliente durante un taglio" 
                   className="w-full h-60 sm:h-80 object-cover"
                 />
                 <img 
-                  src="/ilsaloneassets/salonesalone.png" 
+                  src="/assets/image4.png" 
                   alt="Dettaglio di servizio" 
                   className="w-full h-48 sm:h-64 object-cover"
                 />
@@ -92,7 +93,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Services Preview */}
-      <section className="py-20 bg-brand">
+      <section className="py-20 bg-zinc-900">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12 fade-in">
             <h5 className="text-gold tracking-widest uppercase mb-2">Servizi Premium</h5>
@@ -113,14 +114,14 @@ const HomePage: React.FC = () => {
                 price: '€20'
               },
               {
-                title: "Rituale IL SALONE Piega Corta",
+                title: "Rituale Bato's Piega Corta",
                 description: 'Un massaggio alla cute, prodotti di qualità e tecniche di styling avanzate donano ai tuoi capelli volume, luminosità e durata.',
                 price: '€25'
               }
             ].map((service, index) => (
               <div 
                 key={index} 
-                className="bg-brand p-8 border border-gray-800 hover:border-gold transition-all fade-in"
+                className="bg-black p-8 border border-gray-800 hover:border-gold transition-all fade-in"
                 style={{ '--delay': `${index * 100}ms` } as React.CSSProperties}
               >
                 <h3 className="text-2xl font-heading mb-4">{service.title}</h3>
@@ -143,7 +144,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Gallery Preview */}
-      <section className="py-20 bg-brand">
+      <section className="py-20 bg-black">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12 fade-in">
             <h5 className="text-gold tracking-widest uppercase mb-2">Il Nostro Lavoro</h5>
@@ -154,35 +155,35 @@ const HomePage: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
             <div className="col-span-2 row-span-2">
               <img 
-                src="/ilsaloneassets/tipa1.png" 
-                alt="Il Salone che dà una rifinitura" 
+                src="/assets/proof1.png" 
+                alt="Bato's che dà una rifinitura" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
               <img 
-                src="/ilsaloneassets/tipa2.png" 
+                src="/assets/proof2.png" 
                 alt="Cliente soddisfatto" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
               <img 
-                src="/ilsaloneassets/tipa3.png" 
+                src="/assets/proof3.png" 
                 alt="Taglio moderno" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
               <img 
-                src="/ilsaloneassets/tipa4.png" 
+                src="/assets/proof4.png" 
                 alt="Dettaglio taglio" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
               <img 
-                src="/ilsaloneassets/tipa5.png" 
+                src="/assets/proof5.png" 
                 alt="Interno del negozio" 
                 className="w-full h-full object-cover"
               />
@@ -197,10 +198,10 @@ const HomePage: React.FC = () => {
 
       {/* Call to Action */}
       <section className="py-24 relative">
-        <div className="absolute inset-0 bg-brand">
+        <div className="absolute inset-0 bg-black">
           <div 
             className="absolute inset-0 bg-center bg-cover opacity-30"
-            style={{ backgroundImage: "url('/ilsaloneassets/salonesalone.png')" }}
+            style={{ backgroundImage: "url('/assets/proof6.png')" }}
           ></div>
         </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">

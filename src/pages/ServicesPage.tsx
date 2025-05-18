@@ -16,7 +16,6 @@ const ServicesPage: React.FC = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    // Trigger once for elements in initial view
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
@@ -64,7 +63,7 @@ const ServicesPage: React.FC = () => {
   return (
     <main className="pt-24">
       {/* Hero Section */}
-      <section className="py-16 bg-zinc-900">
+      <section className="py-16 bg-brand">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-10 fade-in">
             <h5 className="text-gold tracking-widest uppercase mb-2">I Nostri Servizi</h5>
@@ -77,7 +76,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Services List */}
-      <section className="py-16 bg-black">
+      <section className="py-16 bg-brand">
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
             {services.map((category, idx) => (
@@ -105,7 +104,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Additional Information */}
-      <section className="py-16 bg-zinc-900">
+      <section className="py-16 bg-brand">
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="fade-in p-8 border border-gray-800 hover:border-gold transition-all">
@@ -131,7 +130,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-brand">
         <div className="container mx-auto px-4 md:px-8 text-center">
           <div className="max-w-2xl mx-auto fade-in">
             <h2 className="text-4xl font-heading font-bold mb-6">Pronto per un'Esperienza Premium?</h2>

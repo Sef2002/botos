@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <Router>
-      <div className="font-primary bg-black text-white min-h-screen">
+      <div className="font-primary bg-brand text-white min-h-screen">
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />

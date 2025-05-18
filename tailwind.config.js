@@ -9,15 +9,19 @@ export default {
       },
       colors: {
         gold: '#c7ad84',
+        brand: '#1e293b', // The blue color from the logo
       },
       backgroundColor: {
         gold: '#c7ad84',
+        brand: '#1e293b',
       },
       borderColor: {
         gold: '#c7ad84',
+        brand: '#1e293b',
       },
       textColor: {
         gold: '#c7ad84',
+        brand: '#1e293b',
       },
     },
   },

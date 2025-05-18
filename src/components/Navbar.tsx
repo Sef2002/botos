@@ -22,11 +22,11 @@ const Navbar: React.FC = () => {
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black py-3' : 'bg-transparent py-6'
+        scrolled ? 'bg-brand py-3' : 'bg-transparent py-6'
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
-        <nav className="flex justify-between items-center bg-[#1b1b1b] rounded-[40px] px-8 py-4">
+        <nav className="flex justify-between items-center bg-brand rounded-[40px] px-8 py-4">
           <NavLink to="/" className="text-2xl font-heading text-white">
             <img src="/ilsaloneassets/logo.png" alt="IL SALONE Logo" className="h-12" />
           </NavLink>
@@ -85,7 +85,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       <div 
-        className={`fixed inset-0 bg-black bg-opacity-95 z-40 md:hidden transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-0 bg-brand bg-opacity-95 z-40 md:hidden transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } pt-20`}
       >

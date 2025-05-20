@@ -26,8 +26,8 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
-        <nav className="flex justify-between items-center bg-[#1b1b1b] rounded-[40px] px-8 py-4">
-          <NavLink to="/" className="text-2xl font-heading text-white">
+        <nav className="flex justify-between items-center bg-white rounded-[40px] px-8 py-4">
+          <NavLink to="/" className="text-2xl font-heading">
             <img src="/assets/logomalahierba.png" alt="Mala Hierba Logo" className="h-12" />
           </NavLink>
 
@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
             <NavLink 
               to="/" 
               className={({isActive}) => 
-                `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
+                `nav-link text-black ${isActive ? 'active' : ''} text-sm tracking-wider`
               }
             >
               HOME
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
             <NavLink 
               to="/servizi" 
               className={({isActive}) => 
-                `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
+                `nav-link text-black ${isActive ? 'active' : ''} text-sm tracking-wider`
               }
             >
               SERVIZI
@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
             <NavLink 
               to="/galleria" 
               className={({isActive}) => 
-                `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
+                `nav-link text-black ${isActive ? 'active' : ''} text-sm tracking-wider`
               }
             >
               GALLERIA
@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
             <NavLink 
               to="/contatti" 
               className={({isActive}) => 
-                `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
+                `nav-link text-black ${isActive ? 'active' : ''} text-sm tracking-wider`
               }
             >
               CONTATTI
@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsOpen(!isOpen)} 
-            className="md:hidden text-white"
+            className="md:hidden text-black"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

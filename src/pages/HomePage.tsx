@@ -147,7 +147,7 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
-            <div className="col-span-2 row-span-2 h-96">
+            <div className="col-span-2 row-span-2 h-[540px]">
               <img src="/assets/photo1.png" alt="Lisa rifinisce" className="w-full h-full object-cover" />
             </div>
             {[
@@ -156,7 +156,7 @@ const HomePage: React.FC = () => {
               'photo3.png',
               'photo2.png'
             ].map((file, idx) => (
-              <div key={idx} className="h-60">
+              <div key={idx} className="h-[260px]">
                 <img src={`/assets/${file}`} alt={`Gallery ${idx}`} className="w-full h-full object-cover" />
               </div>
             ))}

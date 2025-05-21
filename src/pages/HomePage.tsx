@@ -33,8 +33,8 @@ const HomePage: React.FC = () => {
         </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-heading font-bold mb-2 fade-in text-[#5e3a1e]" style={{ '--delay': '100ms' } as React.CSSProperties}>
-              IL SALONE<br />DI LISA
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-heading font-bold mb-2 fade-in text-white inline-block" style={{ '--delay': '100ms' } as React.CSSProperties}>
+              IL SALONE DI LISA
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 mb-4 max-w-xl fade-in" style={{ '--delay': '200ms' } as React.CSSProperties}>
               Ci dedichiamo ogni giorno a valorizzare ogni sfumatura del tuo stile.
@@ -66,12 +66,12 @@ const HomePage: React.FC = () => {
             </div>
             <div className="grid grid-cols-2 gap-4 fade-in">
               <div className="space-y-4">
-                <img src="/assets/image1.png" alt="Lisa al lavoro" className="w-full h-48 sm:h-64 object-cover" />
-                <img src="/assets/image2.png" alt="Strumenti professionali" className="w-full h-48 sm:h-80 object-cover" />
+                <img src="/assets/story1.png" alt="Lisa al lavoro" className="w-full h-48 sm:h-64 object-cover" />
+                <img src="/assets/story2.png" alt="Strumenti professionali" className="w-full h-48 sm:h-80 object-cover" />
               </div>
               <div className="space-y-4 mt-8">
-                <img src="/assets/image3.png" alt="Cliente durante un taglio" className="w-full h-60 sm:h-80 object-cover" />
-                <img src="/assets/image4.png" alt="Dettaglio di servizio" className="w-full h-48 sm:h-64 object-cover" />
+                <img src="/assets/story3.png" alt="Cliente durante un taglio" className="w-full h-60 sm:h-80 object-cover" />
+                <img src="/assets/story4.png" alt="Dettaglio di servizio" className="w-full h-48 sm:h-64 object-cover" />
               </div>
             </div>
           </div>
@@ -146,16 +146,16 @@ const HomePage: React.FC = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
             <div className="col-span-2 row-span-2">
-              <img src="/assets/proof1.png" alt="Lisa rifinisce" className="w-full h-full object-cover" />
+              <img src="/assets/photo1.png" alt="Lisa rifinisce" className="w-full h-full object-cover" />
             </div>
-            <div><img src="/assets/proof2.png" alt="Cliente felice" className="w-full h-full object-cover" /></div>
-            <div><img src="/assets/proof3.png" alt="Taglio moderno" className="w-full h-full object-cover" /></div>
-            <div><img src="/assets/proof4.png" alt="Dettaglio taglio" className="w-full h-full object-cover" /></div>
-            <div><img src="/assets/proof5.png" alt="Interno salone" className="w-full h-full object-cover" /></div>
+            <div><img src="/assets/photo2.png" alt="Cliente felice" className="w-full h-full object-cover" /></div>
+            <div><img src="/assets/photo3.png" alt="Taglio moderno" className="w-full h-full object-cover" /></div>
+            <div><img src="/assets/photo4.png" alt="Dettaglio taglio" className="w-full h-full object-cover" /></div>
+            <div><img src="/assets/photo5.png" alt="Interno salone" className="w-full h-full object-cover" /></div>
           </div>
 
           <div className="text-center mt-12 fade-in">
-            <Link to="/galleria" className="btn btn-outline">SFOGLIA LA GALLERIA</Link>
+            <Link to="/galleria" className="btn btn-outline border-[#5e3a1e] text-[#5e3a1e] hover:bg-[#5e3a1e] hover:text-white">SFOGLIA LA GALLERIA</Link>
           </div>
         </div>
       </section>
@@ -165,13 +165,13 @@ const HomePage: React.FC = () => {
         <div className="absolute inset-0 bg-black">
           <div
             className="absolute inset-0 bg-center bg-cover opacity-30"
-            style={{ backgroundImage: "url('/assets/proof6.png')" }}
+            style={{ backgroundImage: "url('/assets/photo6.png')" }}
           ></div>
         </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
           <div className="max-w-2xl mx-auto fade-in">
-            <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-6 text-[#5e3a1e]">Prenota Il Tuo Appuntamento</h2>
-            <p className="text-lg text-[#5e3a1e] mb-8">
+            <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-6 text-white">Prenota Il Tuo Appuntamento</h2>
+            <p className="text-lg text-white mb-8">
               Non lasciare al caso il tuo look. Prenota ora con i nostri esperti hairstylist per un'esperienza premium.
             </p>
             <a href="#" className="btn btn-primary text-lg px-8 py-3">PRENOTA ORA</a>

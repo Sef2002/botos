@@ -58,10 +58,10 @@ const HomePage: React.FC = () => {
             <div className="fade-in">
               <h2 className="section-title">La Nostra Storia</h2>
               <p className="text-gray-300 mb-8">
-                Nel Centro Commerciale di Caravaggio, in Via Treviglio 25, Bato's Parrucchieri è il punto di riferimento per chi desidera un'esperienza esclusiva...
+                Nel Centro Commerciale di Caravaggio, in Via Treviglio 25, Bato's Parrucchieri è il punto di riferimento per chi desidera un'esperienza esclusiva, dove la cura del capello si unisce al relax e all'eleganza.
               </p>
               <p className="text-gray-300 mb-8">
-                Ogni servizio è studiato per valorizzare la tua immagine con trattamenti di alta qualità...
+                Ogni servizio è studiato per valorizzare la tua immagine con trattamenti di alta qualità, dalle colorazioni raffinate ai tagli su misura, fino ai rituali di benessere che rigenerano e illuminano la chioma. Il nostro team di hairstylist esperti ti guiderà nella scelta del look perfetto, con attenzione ai dettagli e un approccio innovativo.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4 fade-in">
@@ -79,7 +79,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Services Preview */}
-      <section className="py-20 bg-cover bg-center" style={{ backgroundImage: "url('assets/lisabackground.png')" }}>
+      <section className="py-20 bg-zinc-900">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12 fade-in">
             <h5 className="text-gold tracking-widest uppercase mb-2">Servizi Premium</h5>
@@ -107,8 +107,11 @@ const HomePage: React.FC = () => {
             ].map((service, index) => (
               <div
                 key={index}
-                className="bg-black/80 p-8 border border-gray-800 hover:border-gold transition-all fade-in"
-                style={{ '--delay': `${index * 100}ms` } as React.CSSProperties}
+                className="p-8 border border-gray-800 hover:border-gold transition-all fade-in text-white bg-cover bg-center"
+                style={{
+                  backgroundImage: "url('assets/lisabackground.png')",
+                  '--delay': `${index * 100}ms`
+                } as React.CSSProperties}
               >
                 <h3 className="text-2xl font-heading mb-4">{service.title}</h3>
                 <p className="text-gray-300 mb-6 h-24">{service.description}</p>
@@ -130,7 +133,10 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Gallery Preview */}
-      <section className="py-20 bg-cover bg-center" style={{ backgroundImage: "url('assets/lisabackground.png')" }}>
+      <section
+        className="py-20 bg-cover bg-center"
+        style={{ backgroundImage: "url('assets/lisabackground.png')" }}
+      >
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12 fade-in">
             <h5 className="text-gold tracking-widest uppercase mb-2">Il Nostro Lavoro</h5>
@@ -155,10 +161,13 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Call to Action / Footer */}
-      <section
-        className="py-24 relative bg-cover bg-center"
-        style={{ backgroundImage: "url('assets/lisabackground.png')" }}
-      >
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-black">
+          <div
+            className="absolute inset-0 bg-center bg-cover opacity-30"
+            style={{ backgroundImage: "url('/assets/proof6.png')" }}
+          ></div>
+        </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
           <div className="max-w-2xl mx-auto fade-in">
             <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-6">Prenota Il Tuo Appuntamento</h2>

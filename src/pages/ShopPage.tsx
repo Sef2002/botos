@@ -99,14 +99,7 @@ const ShopPage: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div
-                  className="p-6 border-b border-l border-r border-[#5e3a1e] group-hover:border-gold transition-all"
-                  style={{
-                    backgroundImage: "url('/assets/lisabackground.png')",
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                >
+                <div className="bg-white p-6 border-b border-l border-r border-[#5e3a1e] group-hover:border-gold transition-all">
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="text-xl font-heading text-[#5e3a1e]">{product.name}</h3>
                     <span className="text-[#5e3a1e] font-heading">€{product.price}</span>

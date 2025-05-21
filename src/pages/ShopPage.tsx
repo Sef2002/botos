@@ -68,12 +68,12 @@ const ShopPage: React.FC = () => {
   return (
     <main className="pt-24">
       {/* Hero Section */}
-      <section className="py-16 bg-zinc-900">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-10 fade-in">
-            <h5 className="text-gold tracking-widest uppercase mb-2">Prodotti Professionali</h5>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6">SHOP</h1>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            <h5 className="tracking-widest uppercase mb-2 text-[#5e3a1e]">Prodotti Professionali</h5>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 text-[#5e3a1e]">SHOP</h1>
+            <p className="text-lg text-[#5e3a1e] max-w-2xl mx-auto">
               Scopri la nostra selezione di prodotti professionali per la cura dei tuoi capelli.
               Qualità garantita per risultati eccezionali.
             </p>

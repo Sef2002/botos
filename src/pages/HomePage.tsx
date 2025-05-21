@@ -173,7 +173,7 @@ const HomePage: React.FC = () => {
       {/* Prenota CTA */}
       <section
         className="py-24 bg-cover bg-center"
-        style={{ backgroundImage: "url('/assets/photo1.png')" }}
+        style={{ backgroundImage: "url('/assets/photo7.png')" }}
       >
         <div className="container mx-auto px-4 md:px-8 text-center">
           <div className="max-w-2xl mx-auto fade-in">

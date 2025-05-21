@@ -56,18 +56,8 @@ const Navbar: React.FC = () => {
 
             {/* Call-to-action buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <NavLink 
-                to="/shop" 
-                className="border border-[#5e3a1e] text-[#5e3a1e] hover:bg-[#5e3a1e] hover:text-white transition-colors px-4 py-2 rounded-full text-sm"
-              >
-                SHOP
-              </NavLink>
-              <a 
-                href="#" 
-                className="bg-[#5e3a1e] text-white hover:bg-[#4a2f17] transition-colors px-4 py-2 rounded-full text-sm"
-              >
-                PRENOTA
-              </a>
+              <NavLink to="/shop" className="btn btn-outline text-sm">SHOP</NavLink>
+              <a href="#" className="btn btn-primary text-sm">PRENOTA</a>
             </div>
 
             {/* Mobile menu toggle */}
@@ -103,20 +93,8 @@ const Navbar: React.FC = () => {
           })}
 
           <div className="flex flex-col space-y-4 pt-6">
-            <NavLink 
-              to="/shop" 
-              onClick={() => setIsOpen(false)}
-              className="border border-[#5e3a1e] text-[#5e3a1e] hover:bg-[#5e3a1e] hover:text-white transition-colors px-4 py-2 rounded-full text-center"
-            >
-              SHOP
-            </NavLink>
-            <a 
-              href="#" 
-              onClick={() => setIsOpen(false)}
-              className="bg-[#5e3a1e] text-white hover:bg-[#4a2f17] transition-colors px-4 py-2 rounded-full text-center"
-            >
-              PRENOTA
-            </a>
+            <NavLink to="/shop" className="btn btn-outline text-center" onClick={() => setIsOpen(false)}>SHOP</NavLink>
+            <a href="#" className="btn btn-primary text-center" onClick={() => setIsOpen(false)}>PRENOTA</a>
           </div>
         </div>
       </div>

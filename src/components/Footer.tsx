@@ -3,7 +3,10 @@ import { Facebook, Instagram, Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black border-t border-gray-800 mt-16">
+    <footer
+      className="bg-cover bg-center border-t border-gray-800 mt-16"
+      style={{ backgroundImage: "url('assets/lisabackground.png')" }}
+    >
       <div className="container mx-auto px-4 md:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -23,41 +26,30 @@ const Footer: React.FC = () => {
               </a>
             </div>
           </div>
-          
+
           <div>
             <h4 className="text-xl font-heading mb-4 text-white">ORARI</h4>
             <div className="space-y-2 text-gray-400">
-              <div className="flex justify-between border-b border-gray-800 pb-2">
-                <span>Lunedì</span>
-                <span>10:00 - 19:00</span>
-              </div>
-              <div className="flex justify-between border-b border-gray-800 pb-2">
-                <span>Martedì</span>
-                <span>10:00 - 19:00</span>
-              </div>
-              <div className="flex justify-between border-b border-gray-800 pb-2">
-                <span>Mercoledì</span>
-                <span>10:00 - 19:00</span>
-              </div>
-              <div className="flex justify-between border-b border-gray-800 pb-2">
-                <span>Giovedì</span>
-                <span>10:00 - 19:00</span>
-              </div>
-              <div className="flex justify-between border-b border-gray-800 pb-2">
-                <span>Venerdì</span>
-                <span>10:00 - 19:00</span>
-              </div>
-              <div className="flex justify-between border-b border-gray-800 pb-2">
-                <span>Sabato</span>
-                <span>09:00 - 18:00</span>
-              </div>
-              <div className="flex justify-between pb-2">
-                <span>Domenica</span>
-                <span>Chiuso</span>
-              </div>
+              {[
+                ['Lunedì', '10:00 - 19:00'],
+                ['Martedì', '10:00 - 19:00'],
+                ['Mercoledì', '10:00 - 19:00'],
+                ['Giovedì', '10:00 - 19:00'],
+                ['Venerdì', '10:00 - 19:00'],
+                ['Sabato', '09:00 - 18:00'],
+                ['Domenica', 'Chiuso'],
+              ].map(([day, hours], idx) => (
+                <div
+                  key={idx}
+                  className={`flex justify-between ${idx < 6 ? 'border-b border-gray-800' : ''} pb-2`}
+                >
+                  <span>{day}</span>
+                  <span>{hours}</span>
+                </div>
+              ))}
             </div>
           </div>
-          
+
           <div>
             <h4 className="text-xl font-heading mb-4 text-white">CONTATTI</h4>
             <div className="space-y-4 text-gray-400">
@@ -77,7 +69,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-800 mt-10 pt-6 text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center">
           <p>© 2025 Bato's. Tutti i diritti riservati.</p>
           <div className="mt-4 md:mt-0">

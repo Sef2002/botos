@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
                     key={path}
                     to={path}
                     className={({ isActive }) =>
-                      `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
+                      `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider text-[#5e3a1e] hover:text-[#3d2714] transition-colors`
                     }
                   >
                     {labels[index]}
@@ -56,8 +56,12 @@ const Navbar: React.FC = () => {
 
             {/* Call-to-action buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <NavLink to="/shop" className="btn btn-outline text-sm">SHOP</NavLink>
-              <a href="#" className="btn btn-primary text-sm">PRENOTA</a>
+              <NavLink to="/shop" className="btn btn-outline text-sm text-[#5e3a1e] border-[#5e3a1e] hover:bg-[#5e3a1e] hover:text-white transition-colors">
+                SHOP
+              </NavLink>
+              <a href="#" className="btn btn-primary text-sm bg-[#5e3a1e] text-white hover:bg-[#4a2f17] transition-colors">
+                PRENOTA
+              </a>
             </div>
 
             {/* Mobile menu toggle */}
@@ -84,7 +88,7 @@ const Navbar: React.FC = () => {
               <NavLink
                 key={path}
                 to={path}
-                className="text-xl font-heading text-white hover:text-gold transition-colors py-2"
+                className="text-xl font-heading text-white hover:text-[#5e3a1e] transition-colors py-2"
                 onClick={() => setIsOpen(false)}
               >
                 {labels[index]}
@@ -93,8 +97,12 @@ const Navbar: React.FC = () => {
           })}
 
           <div className="flex flex-col space-y-4 pt-6">
-            <NavLink to="/shop" className="btn btn-outline text-center" onClick={() => setIsOpen(false)}>SHOP</NavLink>
-            <a href="#" className="btn btn-primary text-center" onClick={() => setIsOpen(false)}>PRENOTA</a>
+            <NavLink to="/shop" className="btn btn-outline text-center text-[#5e3a1e] border-[#5e3a1e] hover:bg-[#5e3a1e] hover:text-white transition-colors" onClick={() => setIsOpen(false)}>
+              SHOP
+            </NavLink>
+            <a href="#" className="btn btn-primary text-center bg-[#5e3a1e] text-white hover:bg-[#4a2f17] transition-colors" onClick={() => setIsOpen(false)}>
+              PRENOTA
+            </a>
           </div>
         </div>
       </div>

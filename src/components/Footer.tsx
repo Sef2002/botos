@@ -3,9 +3,9 @@ import { Facebook, Instagram, BookIcon as TiktokIcon } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black relative">
-      <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
-      <div className="container mx-auto px-4 md:px-8 py-12 relative z-10 border-t border-gray-800 mt-16">
+    <footer className="bg-black border-t border-gray-800 mt-16 relative">
+      <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/lisabackground.png')" }}></div>
+      <div className="container mx-auto px-4 md:px-8 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h4 className="text-2xl font-heading mb-4 text-white">IL SALONE DI LISA</h4>

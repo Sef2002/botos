@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex justify-between items-center bg-[#1b1b1b] rounded-[40px] px-8 py-4 relative overflow-hidden">
-          <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
+          <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/lisabackground.png')" }}></div>
           <div className="relative z-10 flex justify-between items-center w-full">
             <NavLink to="/" className="text-2xl font-heading text-white">
               <img src="/assets/logo.png" alt="Il Salone di Lisa Logo" className="h-12" />

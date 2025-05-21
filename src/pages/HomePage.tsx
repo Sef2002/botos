@@ -17,6 +17,7 @@ const HomePage: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -47,7 +48,7 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* About Section - La Nostra Storia */}
+      {/* La Nostra Storia */}
       <section
         className="py-20 bg-cover bg-center"
         style={{ backgroundImage: "url('assets/lisabackground.png')" }}
@@ -57,15 +58,15 @@ const HomePage: React.FC = () => {
             <div className="fade-in">
               <h2 className="section-title text-[#5e3a1e]">La Nostra Storia</h2>
               <p className="text-[#5e3a1e] mb-8">
-                Nel Centro Commerciale di Caravaggio, in Via Treviglio 25, Bato's Parrucchieri è il punto di riferimento per chi desidera un'esperienza esclusiva, dove la cura del capello si unisce al relax e all'eleganza.
+                Nel Centro Commerciale di Caravaggio, in Via Treviglio 25, Il Salone di Lisa è il punto di riferimento per chi desidera un'esperienza esclusiva.
               </p>
               <p className="text-[#5e3a1e] mb-8">
-                Ogni servizio è studiato per valorizzare la tua immagine con trattamenti di alta qualità, dalle colorazioni raffinate ai tagli su misura, fino ai rituali di benessere che rigenerano e illuminano la chioma. Il nostro team di hairstylist esperti ti guiderà nella scelta del look perfetto, con attenzione ai dettagli e un approccio innovativo.
+                Ogni servizio è studiato per valorizzare la tua immagine con trattamenti di alta qualità, dai tagli su misura ai rituali di benessere. Il nostro team di hairstylist ti guiderà nella scelta del look perfetto.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4 fade-in">
               <div className="space-y-4">
-                <img src="/assets/image1.png" alt="Bato's al lavoro" className="w-full h-48 sm:h-64 object-cover" />
+                <img src="/assets/image1.png" alt="Lisa al lavoro" className="w-full h-48 sm:h-64 object-cover" />
                 <img src="/assets/image2.png" alt="Strumenti professionali" className="w-full h-48 sm:h-80 object-cover" />
               </div>
               <div className="space-y-4 mt-8">
@@ -77,13 +78,13 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section className="py-20 bg-zinc-900">
+      {/* I Nostri Servizi */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-12 fade-in">
             <h5 className="tracking-widest uppercase mb-2 text-[#5e3a1e]">Servizi Premium</h5>
             <h2 className="section-title text-[#5e3a1e]">I Nostri Servizi</h2>
-            <div className="w-20 h-[2px] bg-[#5e3a1e] mx-auto mt-4"></div>
+            <div className="w-20 h-[2px] bg-gold mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -99,8 +100,8 @@ const HomePage: React.FC = () => {
                 price: '€20'
               },
               {
-                title: "Rituale Bato's Piega Corta",
-                description: 'Un massaggio alla cute, prodotti di qualità e tecniche di styling avanzate donano ai tuoi capelli volume, luminosità e durata.',
+                title: "Piega Corta",
+                description: 'Massaggio alla cute, prodotti di qualità e styling avanzato per volume e luminosità.',
                 price: '€25'
               }
             ].map((service, index) => (
@@ -115,8 +116,8 @@ const HomePage: React.FC = () => {
                 <h3 className="text-2xl font-heading mb-4 text-[#5e3a1e]">{service.title}</h3>
                 <p className="text-[#5e3a1e] mb-6 h-24">{service.description}</p>
                 <div className="flex justify-between items-end">
-                  <span className="text-[#5e3a1e] text-2xl font-heading">{service.price}</span>
-                  <Link to="/servizi" className="flex items-center text-[#5e3a1e] hover:text-white transition-colors">
+                  <span className="text-gold text-2xl font-heading">{service.price}</span>
+                  <Link to="/servizi" className="flex items-center text-gold hover:text-white transition-colors">
                     <span className="mr-2">Dettagli</span>
                     <ArrowRight size={16} />
                   </Link>
@@ -126,12 +127,12 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="text-center mt-12 fade-in">
-            <Link to="/servizi" className="btn btn-outline text-[#5e3a1e] border-[#5e3a1e] hover:bg-[#5e3a1e] hover:text-white">VEDI TUTTI I SERVIZI</Link>
+            <Link to="/servizi" className="btn btn-outline">VEDI TUTTI I SERVIZI</Link>
           </div>
         </div>
       </section>
 
-      {/* Gallery Preview */}
+      {/* Galleria */}
       <section
         className="py-20 bg-cover bg-center"
         style={{ backgroundImage: "url('assets/lisabackground.png')" }}
@@ -140,21 +141,40 @@ const HomePage: React.FC = () => {
           <div className="text-center mb-12 fade-in">
             <h5 className="tracking-widest uppercase mb-2 text-[#5e3a1e]">Il Nostro Lavoro</h5>
             <h2 className="section-title text-[#5e3a1e]">Galleria</h2>
-            <div className="w-20 h-[2px] bg-[#5e3a1e] mx-auto mt-4"></div>
+            <div className="w-20 h-[2px] bg-gold mx-auto mt-4"></div>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
             <div className="col-span-2 row-span-2">
-              <img src="/assets/proof1.png" alt="Bato's che dà una rifinitura" className="w-full h-full object-cover" />
+              <img src="/assets/proof1.png" alt="Lisa rifinisce" className="w-full h-full object-cover" />
             </div>
-            <div><img src="/assets/proof2.png" alt="Cliente soddisfatto" className="w-full h-full object-cover" /></div>
+            <div><img src="/assets/proof2.png" alt="Cliente felice" className="w-full h-full object-cover" /></div>
             <div><img src="/assets/proof3.png" alt="Taglio moderno" className="w-full h-full object-cover" /></div>
             <div><img src="/assets/proof4.png" alt="Dettaglio taglio" className="w-full h-full object-cover" /></div>
-            <div><img src="/assets/proof5.png" alt="Interno del negozio" className="w-full h-full object-cover" /></div>
+            <div><img src="/assets/proof5.png" alt="Interno salone" className="w-full h-full object-cover" /></div>
           </div>
 
           <div className="text-center mt-12 fade-in">
-            <Link to="/galleria" className="btn btn-outline text-[#5e3a1e] border-[#5e3a1e] hover:bg-[#5e3a1e] hover:text-white">SFOGLIA LA GALLERIA</Link>
+            <Link to="/galleria" className="btn btn-outline">SFOGLIA LA GALLERIA</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Prenota CTA */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-black">
+          <div
+            className="absolute inset-0 bg-center bg-cover opacity-30"
+            style={{ backgroundImage: "url('/assets/proof6.png')" }}
+          ></div>
+        </div>
+        <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
+          <div className="max-w-2xl mx-auto fade-in">
+            <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-6 text-[#5e3a1e]">Prenota Il Tuo Appuntamento</h2>
+            <p className="text-lg text-[#5e3a1e] mb-8">
+              Non lasciare al caso il tuo look. Prenota ora con i nostri esperti hairstylist per un'esperienza premium.
+            </p>
+            <a href="#" className="btn btn-primary text-lg px-8 py-3">PRENOTA ORA</a>
           </div>
         </div>
       </section>

@@ -16,7 +16,6 @@ const HomePage: React.FC = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    // Trigger once for elements in initial view
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
@@ -29,13 +28,13 @@ const HomePage: React.FC = () => {
         <div className="absolute inset-0 bg-black">
           <div 
             className="absolute inset-0 bg-center bg-cover opacity-50"
-            style={{ backgroundImage: "url('/assets/background.png')" }}
+            style={{ backgroundImage: "url('/assets/lisabackground.png')" }}
           ></div>
         </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-heading font-bold mb-2 fade-in" style={{ '--delay': '100ms' } as React.CSSProperties}>
-              BATO'S<br />PARRUCCHIERI
+              IL SALONE<br />DI LISA
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 mb-4 max-w-xl fade-in" style={{ '--delay': '200ms' } as React.CSSProperties}>
               Ci dedichiamo ogni giorno a valorizzare ogni sfumatura del tuo stile.
@@ -50,13 +49,14 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4 md:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div className="fade-in">
               <h2 className="section-title">La Nostra Storia</h2>
               <p className="text-gray-300 mb-8">
-                Nel Centro Commerciale di Caravaggio, in Via Treviglio 25, Bato's Parrucchieri è il punto di riferimento per chi desidera un'esperienza esclusiva, dove la cura del capello si unisce al relax e all'eleganza.
+                In Via Roma 26 a Treviglio, Il Salone di Lisa è il punto di riferimento per chi desidera un'esperienza esclusiva, dove la cura del capello si unisce al relax e all'eleganza.
               </p>
               <p className="text-gray-300 mb-8">
                 Ogni servizio è studiato per valorizzare la tua immagine con trattamenti di alta qualità, dalle colorazioni raffinate ai tagli su misura, fino ai rituali di benessere che rigenerano e illuminano la chioma. Il nostro team di hairstylist esperti ti guiderà nella scelta del look perfetto, con attenzione ai dettagli e un approccio innovativo.
@@ -66,7 +66,7 @@ const HomePage: React.FC = () => {
               <div className="space-y-4">
                 <img 
                   src="/assets/image1.png" 
-                  alt="Bato's al lavoro" 
+                  alt="Lisa al lavoro" 
                   className="w-full h-48 sm:h-64 object-cover"
                 />
                 <img 
@@ -93,8 +93,9 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Services Preview */}
-      <section className="py-20 bg-zinc-900">
-        <div className="container mx-auto px-4 md:px-8">
+      <section className="py-20 bg-zinc-900 relative">
+        <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="text-center mb-12 fade-in">
             <h5 className="text-gold tracking-widest uppercase mb-2">Servizi Premium</h5>
             <h2 className="section-title">I Nostri Servizi</h2>
@@ -109,29 +110,32 @@ const HomePage: React.FC = () => {
                 price: 'da €23'
               },
               {
-                title: 'Barba Completa',
-                description: 'Trattamento completo della barba che include rasatura, modellatura e idratazione con oli essenziali.',
+                title: 'Piega',
+                description: 'Trattamento completo che include lavaggio, massaggio e piega personalizzata.',
                 price: '€20'
               },
               {
-                title: "Rituale Bato's Piega Corta",
-                description: 'Un massaggio alla cute, prodotti di qualità e tecniche di styling avanzate donano ai tuoi capelli volume, luminosità e durata.',
-                price: '€25'
+                title: "Colore",
+                description: 'Colorazione professionale con prodotti di alta qualità per un risultato brillante e duraturo.',
+                price: 'da €25'
               }
             ].map((service, index) => (
               <div 
                 key={index} 
-                className="bg-black p-8 border border-gray-800 hover:border-gold transition-all fade-in"
+                className="bg-black p-8 border border-gray-800 hover:border-gold transition-all fade-in relative overflow-hidden"
                 style={{ '--delay': `${index * 100}ms` } as React.CSSProperties}
               >
-                <h3 className="text-2xl font-heading mb-4">{service.title}</h3>
-                <p className="text-gray-400 mb-6 h-24">{service.description}</p>
-                <div className="flex justify-between items-end">
-                  <span className="text-gold text-2xl font-heading">{service.price}</span>
-                  <Link to="/servizi" className="flex items-center text-gold hover:text-white transition-colors">
-                    <span className="mr-2">Dettagli</span>
-                    <ArrowRight size={16} />
-                  </Link>
+                <div className="absolute inset-0 bg-center bg-cover opacity-5" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-heading mb-4">{service.title}</h3>
+                  <p className="text-gray-400 mb-6 h-24">{service.description}</p>
+                  <div className="flex justify-between items-end">
+                    <span className="text-gold text-2xl font-heading">{service.price}</span>
+                    <Link to="/servizi" className="flex items-center text-gold hover:text-white transition-colors">
+                      <span className="mr-2">Dettagli</span>
+                      <ArrowRight size={16} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
@@ -144,8 +148,9 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Gallery Preview */}
-      <section className="py-20 bg-black">
-        <div className="container mx-auto px-4 md:px-8">
+      <section className="py-20 bg-black relative">
+        <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
+        <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="text-center mb-12 fade-in">
             <h5 className="text-gold tracking-widest uppercase mb-2">Il Nostro Lavoro</h5>
             <h2 className="section-title">Galleria</h2>
@@ -156,14 +161,14 @@ const HomePage: React.FC = () => {
             <div className="col-span-2 row-span-2">
               <img 
                 src="/assets/proof1.png" 
-                alt="Bato's che dà una rifinitura" 
+                alt="Lisa che dà una rifinitura" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
               <img 
                 src="/assets/proof2.png" 
-                alt="Cliente soddisfatto" 
+                alt="Cliente soddisfatta" 
                 className="w-full h-full object-cover"
               />
             </div>

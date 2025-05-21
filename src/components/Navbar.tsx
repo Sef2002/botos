@@ -26,60 +26,63 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
-        <nav className="flex justify-between items-center bg-[#1b1b1b] rounded-[40px] px-8 py-4">
-          <NavLink to="/" className="text-2xl font-heading text-white">
-            <img src="/assets/logo.png" alt="Bato's Logo" className="h-12" />
-          </NavLink>
+        <nav className="flex justify-between items-center bg-[#1b1b1b] rounded-[40px] px-8 py-4 relative overflow-hidden">
+          <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
+          <div className="relative z-10 flex justify-between items-center w-full">
+            <NavLink to="/" className="text-2xl font-heading text-white">
+              <img src="/assets/logo.png" alt="Il Salone di Lisa Logo" className="h-12" />
+            </NavLink>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-10">
-            <NavLink 
-              to="/" 
-              className={({isActive}) => 
-                `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
-              }
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-10">
+              <NavLink 
+                to="/" 
+                className={({isActive}) => 
+                  `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
+                }
+              >
+                HOME
+              </NavLink>
+              <NavLink 
+                to="/servizi" 
+                className={({isActive}) => 
+                  `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
+                }
+              >
+                SERVIZI
+              </NavLink>
+              <NavLink 
+                to="/galleria" 
+                className={({isActive}) => 
+                  `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
+                }
+              >
+                GALLERIA
+              </NavLink>
+              <NavLink 
+                to="/contatti" 
+                className={({isActive}) => 
+                  `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
+                }
+              >
+                CONTATTI
+              </NavLink>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="hidden md:flex items-center space-x-4">
+              <NavLink to="/shop" className="btn btn-outline text-sm">SHOP</NavLink>
+              <a href="#" className="btn btn-primary text-sm">PRENOTA</a>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={() => setIsOpen(!isOpen)} 
+              className="md:hidden text-white"
             >
-              HOME
-            </NavLink>
-            <NavLink 
-              to="/servizi" 
-              className={({isActive}) => 
-                `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
-              }
-            >
-              SERVIZI
-            </NavLink>
-            <NavLink 
-              to="/galleria" 
-              className={({isActive}) => 
-                `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
-              }
-            >
-              GALLERIA
-            </NavLink>
-            <NavLink 
-              to="/contatti" 
-              className={({isActive}) => 
-                `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
-              }
-            >
-              CONTATTI
-            </NavLink>
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
-
-          {/* CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <NavLink to="/shop" className="btn btn-outline text-sm">SHOP</NavLink>
-            <a href="#" className="btn btn-primary text-sm">PRENOTA</a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setIsOpen(!isOpen)} 
-            className="md:hidden text-white"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </nav>
       </div>
 

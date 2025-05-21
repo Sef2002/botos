@@ -1,15 +1,16 @@
 import React from 'react';
-import { Facebook, Instagram, Twitter } from 'lucide-react';
+import { Facebook, Instagram, TiktokIcon } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black border-t border-gray-800 mt-16">
-      <div className="container mx-auto px-4 md:px-8 py-12">
+    <footer className="bg-black relative">
+      <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
+      <div className="container mx-auto px-4 md:px-8 py-12 relative z-10 border-t border-gray-800 mt-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h4 className="text-2xl font-heading mb-4 text-white">BATO'S</h4>
+            <h4 className="text-2xl font-heading mb-4 text-white">IL SALONE DI LISA</h4>
             <p className="text-gray-400 mb-6">
-              Il miglior salone nella città di Caravaggio, dove tradizione e modernità si incontrano per offrire servizi di altissima qualità.
+              Il miglior salone nella città di Treviglio, dove tradizione e modernità si incontrano per offrire servizi di altissima qualità.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 border border-gold flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-all">
@@ -19,7 +20,7 @@ const Footer: React.FC = () => {
                 <Instagram size={20} />
               </a>
               <a href="#" className="w-10 h-10 border border-gold flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-all">
-                <Twitter size={20} />
+                <TiktokIcon size={20} />
               </a>
             </div>
           </div>
@@ -63,23 +64,23 @@ const Footer: React.FC = () => {
             <div className="space-y-4 text-gray-400">
               <p className="flex flex-col">
                 <span className="text-gold mb-1">Indirizzo</span>
-                <span>Via Treviglio, 25</span>
-                <span>presso C.C. di Caravaggio, 24043</span>
+                <span>Via Roma, 26</span>
+                <span>24047 Treviglio (BG)</span>
               </p>
               <p className="flex flex-col">
                 <span className="text-gold mb-1">Telefono</span>
-                <a href="tel:0363226324" className="hover:text-gold transition-colors">0363 226324</a>
+                <a href="tel:3332030586" className="hover:text-gold transition-colors">333 203 0586</a>
               </p>
               <p className="flex flex-col">
                 <span className="text-gold mb-1">Email</span>
-                <a href="mailto:Batosparrucchieri@gmail.com" className="hover:text-gold transition-colors">Batosparrucchieri@gmail.com</a>
+                <a href="mailto:ilsalonedilisa16@gmail.com" className="hover:text-gold transition-colors">ilsalonedilisa16@gmail.com</a>
               </p>
             </div>
           </div>
         </div>
         
         <div className="border-t border-gray-800 mt-10 pt-6 text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center">
-          <p>© 2025 Bato's. Tutti i diritti riservati.</p>
+          <p>© 2025 Il Salone di Lisa. Tutti i diritti riservati.</p>
           <div className="mt-4 md:mt-0">
             <a href="#" className="hover:text-gold transition-colors mr-6">Privacy Policy</a>
             <a href="#" className="hover:text-gold transition-colors">Termini di Servizio</a>

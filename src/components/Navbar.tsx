@@ -18,17 +18,18 @@ const Navbar: React.FC = () => {
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black py-3' : 'bg-transparent py-6'
+        scrolled ? 'py-3' : 'py-6'
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
-        <nav className="flex justify-between items-center rounded-[40px] px-8 py-4 relative overflow-hidden">
-          {/* Marble background layer */}
-          <div 
-            className="absolute inset-0 bg-center bg-cover opacity-10" 
-            style={{ backgroundImage: "url('/assets/lisabackground.png')" }}
-          />
-          
+        <nav
+          className="flex justify-between items-center rounded-[40px] px-8 py-4 relative overflow-hidden"
+          style={{
+            backgroundImage: "url('assets/lisabackground.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
           {/* Foreground content */}
           <div className="relative z-10 flex justify-between items-center w-full">
             <NavLink to="/" className="text-2xl font-heading text-white">

@@ -66,7 +66,7 @@ const ShopPage: React.FC = () => {
   ];
 
   return (
-    <main className="pt-24">
+    <main className="pt-24 bg-white">
       {/* Hero Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
@@ -82,7 +82,7 @@ const ShopPage: React.FC = () => {
       </section>
 
       {/* Products Grid */}
-      <section className="py-16 bg-black">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
@@ -99,7 +99,10 @@ const ShopPage: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="bg-white p-6 border-b border-l border-r border-[#5e3a1e] group-hover:border-gold transition-all">
+                <div
+                  className="p-6 border-b border-l border-r border-[#5e3a1e] group-hover:border-gold transition-all"
+                  style={{ backgroundImage: "url('/assets/lisabackground.png')" }}
+                >
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="text-xl font-heading text-[#5e3a1e]">{product.name}</h3>
                     <span className="text-[#5e3a1e] font-heading">€{product.price}</span>

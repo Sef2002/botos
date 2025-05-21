@@ -105,19 +105,34 @@ const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: 'Taglio Classico',
-                description: 'Un taglio tradizionale eseguito con forbici e pettine, adatto a chi cerca uno stile raffinato.',
-                price: '€23'
+                title: 'Taglio',
+                description: 'Taglio personalizzato che valorizza i tuoi lineamenti e si adatta al tuo stile di vita.',
+                price: '€25'
+              },
+              {
+                title: 'Colorazione',
+                description: 'Servizio di colorazione professionale con prodotti di alta qualità per un risultato brillante e duraturo.',
+                price: 'da €35'
               },
               {
                 title: 'Piega',
-                description: 'Trattamento completo che include lavaggio, massaggio e piega personalizzata.',
+                description: 'Piega personalizzata con prodotti specifici per il tuo tipo di capello.',
                 price: '€20'
               },
               {
-                title: "Colore",
-                description: 'Colorazione professionale con prodotti di alta qualità per un risultato brillante e duraturo.',
-                price: 'da €25'
+                title: 'Armocromia',
+                description: 'Analisi del sottotono della pelle per individuare i colori che più ti valorizzano.',
+                price: '€50'
+              },
+              {
+                title: 'Make up',
+                description: 'Servizio di trucco professionale per ogni occasione, dal look naturale al glamour.',
+                price: 'da €30'
+              },
+              {
+                title: 'Servizio Sposa',
+                description: 'Pacchetto completo per il tuo giorno speciale: prova, trucco e acconciatura.',
+                price: 'da €150'
               }
             ].map((service, index) => (
               <div 

@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
         >
           {/* Foreground content */}
           <div className="relative z-10 flex justify-between items-center w-full">
-            <NavLink to="/" className="text-2xl font-heading text-[#5e3a1e]">
+            <NavLink to="/" className="text-2xl font-heading text-white">
               <img src="/assets/logo.png" alt="Il Salone di Lisa Logo" className="h-12" />
             </NavLink>
 
@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
                     key={path}
                     to={path}
                     className={({ isActive }) =>
-                      `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider text-[#5e3a1e] hover:text-[#3d2714] transition-colors`
+                      `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`
                     }
                   >
                     {labels[index]}
@@ -56,18 +56,14 @@ const Navbar: React.FC = () => {
 
             {/* Call-to-action buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <NavLink to="/shop" className="btn btn-outline text-sm text-[#5e3a1e] border-[#5e3a1e] hover:bg-[#5e3a1e] hover:text-white transition-colors">
-                SHOP
-              </NavLink>
-              <a href="#" className="btn btn-primary text-sm bg-[#5e3a1e] text-white hover:bg-[#4a2f17] transition-colors">
-                PRENOTA
-              </a>
+              <NavLink to="/shop" className="btn btn-outline text-sm">SHOP</NavLink>
+              <a href="#" className="btn btn-primary text-sm">PRENOTA</a>
             </div>
 
             {/* Mobile menu toggle */}
             <button 
               onClick={() => setIsOpen(!isOpen)} 
-              className="md:hidden text-[#5e3a1e]"
+              className="md:hidden text-white"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -88,26 +84,17 @@ const Navbar: React.FC = () => {
               <NavLink
                 key={path}
                 to={path}
-                className="text-xl font-heading text-white hover:text-[#5e3a1e] transition-colors py-2"
+                className="text-xl font-heading text-white hover:text-gold transition-colors py-2"
                 onClick={() => setIsOpen(false)}
               >
                 {labels[index]}
               </NavLink>
-                        <div className="flex flex-col space-y-4 pt-6">
-            <NavLink 
-              to="/shop" 
-              onClick={() => setIsOpen(false)}
-              className="btn btn-outline text-center text-[#5e3a1e] border-[#5e3a1e] hover:bg-[#5e3a1e] hover:text-white transition-colors"
-            >
-              SHOP
-            </NavLink>
-            <a 
-              href="#" 
-              onClick={() => setIsOpen(false)}
-              className="btn btn-primary text-center bg-[#5e3a1e] text-white hover:bg-[#4a2f17] transition-colors"
-            >
-              PRENOTA
-            </a>
+            );
+          })}
+
+          <div className="flex flex-col space-y-4 pt-6">
+            <NavLink to="/shop" className="btn btn-outline text-center" onClick={() => setIsOpen(false)}>SHOP</NavLink>
+            <a href="#" className="btn btn-primary text-center" onClick={() => setIsOpen(false)}>PRENOTA</a>
           </div>
         </div>
       </div>

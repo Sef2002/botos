@@ -16,7 +16,6 @@ const ServicesPage: React.FC = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    // Trigger once for elements in initial view
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
@@ -85,14 +84,24 @@ const ServicesPage: React.FC = () => {
                 <h2 className="text-3xl font-heading text-gold mb-8 pb-2 border-b border-gold">
                   {category.category}
                 </h2>
-                <div className="space-y-0">
+                <div className="space-y-6">
                   {category.items.map((service, index) => (
-                    <div key={index} className="service-item">
+                    <div
+                      key={index}
+                      className="p-6 rounded-lg shadow-lg flex justify-between items-start border border-gold text-white"
+                      style={{
+                        backgroundImage: "url('assets/lisabackground.png')",
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        backdropFilter: 'blur(2px)',
+                      }}
+                    >
                       <div>
                         <h3 className="text-xl font-heading mb-1">{service.name}</h3>
-                        <p className="text-gray-400 text-sm">{service.description}</p>
+                        <p className="text-sm text-white/80">{service.description}</p>
                       </div>
-                      <div className="text-gold text-xl font-heading ml-4">
+                      <div className="text-gold text-xl font-heading ml-4 whitespace-nowrap">
                         {service.price}
                       </div>
                     </div>

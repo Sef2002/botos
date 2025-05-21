@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-gold: #c7ad84;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -26,11 +30,11 @@ body {
   }
   
   .btn-primary {
-    @apply bg-taupe text-charcoal hover:bg-opacity-90;
+    @apply bg-gold text-black hover:bg-opacity-90;
   }
   
   .btn-outline {
-    @apply border border-taupe text-taupe hover:bg-taupe hover:text-charcoal;
+    @apply border border-gold text-gold hover:bg-gold hover:text-black;
   }
   
   .section-title {
@@ -39,20 +43,20 @@ body {
   
   .section-title::after {
     content: "";
-    @apply absolute bottom-0 left-0 w-1/2 h-[2px] bg-taupe;
+    @apply absolute bottom-0 left-0 w-1/2 h-[2px] bg-gold;
   }
   
   .service-item {
-    @apply border-b border-taupe/20 py-6 flex justify-between items-center transition-all hover:border-taupe;
+    @apply border-b border-gray-800 py-6 flex justify-between items-center transition-all hover:border-gold;
   }
   
   .nav-link {
-    @apply relative py-2 text-cream transition-all duration-300;
+    @apply relative py-2 text-white transition-all duration-300;
   }
   
   .nav-link::after {
     content: "";
-    @apply absolute left-0 bottom-0 w-0 h-[1px] bg-taupe transition-all duration-300;
+    @apply absolute left-0 bottom-0 w-0 h-[1px] bg-gold transition-all duration-300;
   }
   
   .nav-link:hover::after {

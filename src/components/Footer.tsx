@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Instagram, TiktokIcon } from 'lucide-react';
+import { Facebook, Instagram, BookIcon as TiktokIcon } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (

@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
-        <nav className="flex justify-between items-center bg-[#1b1b1b] rounded-[40px] px-8 py-4 relative overflow-hidden">
+        <nav className="flex justify-between items-center rounded-[40px] px-8 py-4 relative overflow-hidden">
           {/* Marble background layer */}
           <div 
             className="absolute inset-0 bg-center bg-cover opacity-10" 

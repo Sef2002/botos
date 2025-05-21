@@ -147,14 +147,19 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
-            <div className="col-span-2 row-span-2">
+            <div className="col-span-2 row-span-2 h-96">
               <img src="/assets/photo1.png" alt="Lisa rifinisce" className="w-full h-full object-cover" />
             </div>
-            <div><img src="/assets/photo4.png" alt="Cliente felice" className="w-full h-full object-cover" /></div>
-            <div><img src="/assets/photo5.png" alt="Taglio moderno" className="w-full h-full object-cover" /></div>
-            <div><img src="/assets/photo3.png" alt="Dettaglio taglio" className="w-full h-full object-cover" /></div>
-            <div><img src="/assets/photo2.png" alt="Interno salone" className="w-full h-full object-cover" /></div>
-            <div><img src="/assets/photo6.png" alt="Altro dettaglio" className="w-full h-full object-cover" /></div>
+            {[
+              'photo4.png',
+              'photo5.png',
+              'photo3.png',
+              'photo2.png'
+            ].map((file, idx) => (
+              <div key={idx} className="h-60">
+                <img src={`/assets/${file}`} alt={`Gallery ${idx}`} className="w-full h-full object-cover" />
+              </div>
+            ))}
           </div>
 
           <div className="text-center mt-12 fade-in">
@@ -166,14 +171,11 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Prenota CTA */}
-      <section className="py-24 relative">
-        <div className="absolute inset-0 bg-black">
-          <div
-            className="absolute inset-0 bg-center bg-cover opacity-30"
-            style={{ backgroundImage: "url('/assets/photo6.png')" }}
-          ></div>
-        </div>
-        <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
+      <section
+        className="py-24 bg-cover bg-center"
+        style={{ backgroundImage: "url('/assets/photo1.png')" }}
+      >
+        <div className="container mx-auto px-4 md:px-8 text-center">
           <div className="max-w-2xl mx-auto fade-in">
             <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-6 text-white">Prenota Il Tuo Appuntamento</h2>
             <p className="text-lg text-white mb-8">

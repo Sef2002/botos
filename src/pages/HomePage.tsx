@@ -175,7 +175,8 @@ const HomePage: React.FC = () => {
         className="py-24 bg-cover bg-center"
         style={{ backgroundImage: "url('/assets/photo7.png')" }}
       >
-        <div className="container mx-auto px-4 md:px-8 text-center">
+        <div className="bg-black/20 absolute inset-0"></div> {/* Reduced opacity overlay */}
+        <div className="container mx-auto px-4 md:px-8 text-center relative z-10">
           <div className="max-w-2xl mx-auto fade-in">
             <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-6 text-white">Prenota Il Tuo Appuntamento</h2>
             <p className="text-lg text-white mb-8">

@@ -13,10 +13,10 @@ const ShopPage: React.FC = () => {
         }
       });
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -86,28 +86,35 @@ const ShopPage: React.FC = () => {
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
-              <div 
+              <div
                 key={index}
-                className="group relative overflow-hidden fade-in"
+                className="group relative overflow-hidden fade-in rounded-md shadow-md"
                 style={{ '--delay': `${index * 100}ms` } as React.CSSProperties}
               >
                 <div className="relative h-[400px] overflow-hidden">
-                  <img 
-                    src={product.image} 
+                  <img
+                    src={product.image}
                     alt={product.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="bg-[#1b1b1b] p-6 border-b border-l border-r border-gray-800 group-hover:border-gold transition-all">
+                <div
+                  className="p-6 border-b border-l border-r border-[#5e3a1e] group-hover:border-gold transition-all"
+                  style={{
+                    backgroundImage: "url('/assets/lisabackground.png')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
+                >
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-heading">{product.name}</h3>
-                    <span className="text-gold font-heading">€{product.price}</span>
+                    <h3 className="text-xl font-heading text-[#5e3a1e]">{product.name}</h3>
+                    <span className="text-[#5e3a1e] font-heading">€{product.price}</span>
                   </div>
-                  <p className="text-gray-400 text-sm mb-4">{product.description}</p>
+                  <p className="text-[#5e3a1e] text-sm mb-4">{product.description}</p>
                   <div className="flex justify-between items-center">
-                    <span className="text-gold text-sm">{product.category}</span>
-                    <button className="btn btn-outline flex items-center gap-2 text-sm py-1">
+                    <span className="text-[#5e3a1e] text-sm">{product.category}</span>
+                    <button className="btn btn-outline flex items-center gap-2 text-sm py-1 border-[#5e3a1e] text-[#5e3a1e] hover:bg-[#5e3a1e] hover:text-white transition-all">
                       <ShoppingCart size={16} />
                       Aggiungi
                     </button>

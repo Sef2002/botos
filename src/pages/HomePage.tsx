@@ -28,7 +28,7 @@ const HomePage: React.FC = () => {
         <div className="absolute inset-0 bg-black">
           <div 
             className="absolute inset-0 bg-center bg-cover opacity-50"
-            style={{ backgroundImage: "url('/assets/lisabackground.png')" }}
+            style={{ backgroundImage: "url('/assets/background.png')" }}
           ></div>
         </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
 
       {/* About Section */}
       <section className="py-20 bg-black relative">
-        <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
+        <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/lisabackground.png')" }}></div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div className="fade-in">
@@ -94,7 +94,7 @@ const HomePage: React.FC = () => {
 
       {/* Services Preview */}
       <section className="py-20 bg-zinc-900 relative">
-        <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
+        <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/lisabackground.png')" }}></div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="text-center mb-12 fade-in">
             <h5 className="text-gold tracking-widest uppercase mb-2">Servizi Premium</h5>
@@ -107,7 +107,7 @@ const HomePage: React.FC = () => {
               {
                 title: 'Taglio Classico',
                 description: 'Un taglio tradizionale eseguito con forbici e pettine, adatto a chi cerca uno stile raffinato.',
-                price: 'da €23'
+                price: '€23'
               },
               {
                 title: 'Piega',
@@ -125,7 +125,7 @@ const HomePage: React.FC = () => {
                 className="bg-black p-8 border border-gray-800 hover:border-gold transition-all fade-in relative overflow-hidden"
                 style={{ '--delay': `${index * 100}ms` } as React.CSSProperties}
               >
-                <div className="absolute inset-0 bg-center bg-cover opacity-5" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
+                <div className="absolute inset-0 bg-center bg-cover opacity-5" style={{ backgroundImage: "url('/assets/lisabackground.png')" }}></div>
                 <div className="relative z-10">
                   <h3 className="text-2xl font-heading mb-4">{service.title}</h3>
                   <p className="text-gray-400 mb-6 h-24">{service.description}</p>
@@ -149,7 +149,7 @@ const HomePage: React.FC = () => {
 
       {/* Gallery Preview */}
       <section className="py-20 bg-black relative">
-        <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/background.png')" }}></div>
+        <div className="absolute inset-0 bg-center bg-cover opacity-10" style={{ backgroundImage: "url('/assets/lisabackground.png')" }}></div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="text-center mb-12 fade-in">
             <h5 className="text-gold tracking-widest uppercase mb-2">Il Nostro Lavoro</h5>

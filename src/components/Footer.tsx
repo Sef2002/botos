@@ -10,8 +10,8 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 md:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h4 className="text-2xl font-heading mb-4 text-white">IL SALONE DI LISA</h4>
-            <p className="text-gray-400 mb-6">
+            <h4 className="text-2xl font-heading mb-4 text-[#5e3a1e]">IL SALONE DI LISA</h4>
+            <p className="text-[#5e3a1e] mb-6">
               Il miglior salone nella città di Treviglio, dove tradizione e modernità si incontrano per offrire servizi di altissima qualità.
             </p>
             <div className="flex space-x-4">
@@ -28,8 +28,8 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-xl font-heading mb-4 text-white">ORARI</h4>
-            <div className="space-y-2 text-gray-400">
+            <h4 className="text-xl font-heading mb-4 text-[#5e3a1e]">ORARI</h4>
+            <div className="space-y-2 text-[#5e3a1e]">
               {[
                 ['Lunedì', '10:00 - 19:00'],
                 ['Martedì', '10:00 - 19:00'],
@@ -51,26 +51,26 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-xl font-heading mb-4 text-white">CONTATTI</h4>
-            <div className="space-y-4 text-gray-400">
+            <h4 className="text-xl font-heading mb-4 text-[#5e3a1e]">CONTATTI</h4>
+            <div className="space-y-4 text-[#5e3a1e]">
               <p className="flex flex-col">
-                <span className="text-gold mb-1">Indirizzo</span>
+                <span className="text-[#5e3a1e] mb-1 font-semibold">Indirizzo</span>
                 <span>Via Roma, 26</span>
                 <span>24047 Treviglio BG</span>
               </p>
               <p className="flex flex-col">
-                <span className="text-gold mb-1">Telefono</span>
+                <span className="text-[#5e3a1e] mb-1 font-semibold">Telefono</span>
                 <a href="tel:0363701142" className="hover:text-gold transition-colors">0363 701142</a>
               </p>
               <p className="flex flex-col">
-                <span className="text-gold mb-1">Email</span>
+                <span className="text-[#5e3a1e] mb-1 font-semibold">Email</span>
                 <a href="mailto:ilsalonedilisa16@gmail.com" className="hover:text-gold transition-colors">ilsalonedilisa16@gmail.com</a>
               </p>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-10 pt-6 text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-gray-800 mt-10 pt-6 text-[#5e3a1e] text-sm flex flex-col md:flex-row justify-between items-center">
           <p>© 2025 Il Salone di Lisa. Tutti i diritti riservati.</p>
           <div className="mt-4 md:mt-0">
             <a href="#" className="hover:text-gold transition-colors mr-6">Privacy Policy</a>

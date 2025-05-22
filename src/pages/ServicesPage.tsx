@@ -16,7 +16,6 @@ const ServicesPage: React.FC = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    // Trigger once for elements in initial view
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
@@ -33,19 +32,19 @@ const ServicesPage: React.FC = () => {
       ]
     },
     {
-      category: 'Servizi Barba',
+      category: 'Servizi Styling',
       items: [
-        { name: 'Rifinitura Barba', description: 'Modellatura e rifinitura della barba', price: '€15' },
-        { name: 'Barba Completa', description: 'Rasatura, modellatura e trattamento con oli', price: '€20' },
-        { name: 'Rasatura Tradizionale', description: 'Rasatura con asciugamano caldo e rasoio a mano libera', price: '€25' },
-        { name: 'Trattamento Luxury', description: 'Rasatura premium con prodotti di alta gamma', price: '€35' }
+        { name: 'Rifinitura Styling', description: 'Modellatura e rifinitura dello stile', price: '€15' },
+        { name: 'Styling Completo', description: 'Modellatura e trattamento con prodotti premium', price: '€20' },
+        { name: 'Piega Tradizionale', description: 'Piega classica con prodotti professionali', price: '€25' },
+        { name: 'Trattamento Luxury', description: 'Styling premium con prodotti di alta gamma', price: '€35' }
       ]
     },
     {
       category: 'Pacchetti Combinati',
       items: [
-        { name: 'Taglio & Barba', description: 'Combinazione di taglio capelli e servizio barba', price: '€40' },
-        { name: 'Pacchetto VIP', description: 'Taglio, barba e trattamento viso completo', price: '€65' },
+        { name: 'Taglio & Styling', description: 'Combinazione di taglio capelli e servizio styling', price: '€40' },
+        { name: 'Pacchetto VIP', description: 'Taglio, styling e trattamento viso completo', price: '€65' },
         { name: 'Padre & Figlio', description: 'Taglio per padre e figlio (sotto i 12 anni)', price: '€45' },
         { name: 'Sposo', description: 'Pacchetto completo per il giorno speciale', price: '€75' }
       ]
@@ -53,10 +52,10 @@ const ServicesPage: React.FC = () => {
     {
       category: 'Trattamenti Speciali',
       items: [
-        { name: 'Colorazione', description: 'Colorazione professionale per capelli o barba', price: 'da €40' },
+        { name: 'Colorazione', description: 'Colorazione professionale per capelli', price: 'da €40' },
         { name: 'Trattamento Viso', description: 'Pulizia e idratazione profonda del viso', price: '€30' },
         { name: 'Massaggio Testa', description: 'Massaggio rilassante del cuoio capelluto', price: '€20' },
-        { name: 'Maschera Nutriente', description: 'Trattamento intensivo per capelli o barba', price: '€25' }
+        { name: 'Maschera Nutriente', description: 'Trattamento intensivo per capelli', price: '€25' }
       ]
     }
   ];
@@ -68,9 +67,9 @@ const ServicesPage: React.FC = () => {
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-10 fade-in">
             <h5 className="text-gold tracking-widest uppercase mb-2">I Nostri Servizi</h5>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6">SERVIZI PREMIUM</h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 text-gold">SERVIZI PREMIUM</h1>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Esplora la nostra gamma completa di servizi di barberia, accuratamente progettati per offrire un'esperienza ineguagliabile e risultati impeccabili.
+              Esplora la nostra gamma completa di servizi, accuratamente progettati per offrire un'esperienza ineguagliabile e risultati impeccabili.
             </p>
           </div>
         </div>
@@ -136,7 +135,7 @@ const ServicesPage: React.FC = () => {
           <div className="max-w-2xl mx-auto fade-in">
             <h2 className="text-4xl font-heading font-bold mb-6">Pronto per un'Esperienza Premium?</h2>
             <p className="text-lg text-gray-300 mb-8">
-              Prenota il tuo appuntamento oggi stesso e scopri perché siamo il barbiere più rinomato della città.
+              Prenota il tuo appuntamento oggi stesso e scopri perché siamo il salone più rinomato della città.
             </p>
             <a href="#" className="btn btn-primary text-lg px-8 py-3">PRENOTA ORA</a>
           </div>

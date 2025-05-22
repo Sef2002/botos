@@ -16,7 +16,6 @@ const HomePage: React.FC = () => {
     };
     
     window.addEventListener('scroll', handleScroll);
-    // Trigger once for elements in initial view
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
@@ -29,7 +28,7 @@ const HomePage: React.FC = () => {
         <div className="absolute inset-0 bg-black">
           <div 
             className="absolute inset-0 bg-center bg-cover opacity-50"
-            style={{ backgroundImage: "url('/assets/background.png')" }}
+            style={{ backgroundImage: "url('/assets/background2.png')" }}
           ></div>
         </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
@@ -65,24 +64,24 @@ const HomePage: React.FC = () => {
             <div className="grid grid-cols-2 gap-4 fade-in">
               <div className="space-y-4">
                 <img 
-                  src="/assets/image1.png" 
+                  src="/assets/salonesalone.png" 
                   alt="IL SALONE al lavoro" 
                   className="w-full h-48 sm:h-64 object-cover"
                 />
                 <img 
-                  src="/assets/image2.png" 
+                  src="/assets/salonesalone1.png" 
                   alt="Strumenti professionali" 
                   className="w-full h-48 sm:h-80 object-cover"
                 />
               </div>
               <div className="space-y-4 mt-8">
                 <img 
-                  src="/assets/image3.png" 
+                  src="/assets/salonesalone2.png" 
                   alt="Cliente durante un taglio" 
                   className="w-full h-60 sm:h-80 object-cover"
                 />
                 <img 
-                  src="/assets/image4.png" 
+                  src="/assets/salonesalone3.png" 
                   alt="Dettaglio di servizio" 
                   className="w-full h-48 sm:h-64 object-cover"
                 />
@@ -155,35 +154,35 @@ const HomePage: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 fade-in">
             <div className="col-span-2 row-span-2">
               <img 
-                src="/assets/proof1.png" 
+                src="/assets/tipa1.png" 
                 alt="IL SALONE che dà una rifinitura" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
               <img 
-                src="/assets/proof2.png" 
+                src="/assets/tipa2.png" 
                 alt="Cliente soddisfatto" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
               <img 
-                src="/assets/proof3.png" 
+                src="/assets/tipa3.png" 
                 alt="Taglio moderno" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
               <img 
-                src="/assets/proof4.png" 
+                src="/assets/tipa4.png" 
                 alt="Dettaglio taglio" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div>
               <img 
-                src="/assets/proof5.png" 
+                src="/assets/tipa5.png" 
                 alt="Interno del negozio" 
                 className="w-full h-full object-cover"
               />
@@ -201,7 +200,7 @@ const HomePage: React.FC = () => {
         <div className="absolute inset-0 bg-black">
           <div 
             className="absolute inset-0 bg-center bg-cover opacity-30"
-            style={{ backgroundImage: "url('/assets/proof6.png')" }}
+            style={{ backgroundImage: "url('/assets/background2.png')" }}
           ></div>
         </div>
         <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">

@@ -6,10 +6,12 @@ import GalleryPage from './pages/GalleryPage';
 import ShopPage from './pages/ShopPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="font-primary bg-black text-white min-h-screen">
         <Navbar />
         <Routes>

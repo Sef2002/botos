@@ -25,37 +25,45 @@ const ServicesPage: React.FC = () => {
     {
       category: 'Taglio di Capelli',
       items: [
-        { name: 'Taglio Classico', description: 'Taglio tradizionale con forbici e pettine', price: '€25' },
-        { name: 'Taglio Moderno', description: 'Stile contemporaneo con tecniche avanzate', price: '€30' },
-        { name: 'Taglio Fade', description: 'Sfumatura progressiva sui lati e sul retro', price: '€35' },
-        { name: 'Taglio Premium', description: 'Consulenza, taglio e styling premium', price: '€45' }
+        { name: 'Taglio Donna', description: 'Taglio personalizzato secondo la morfologia del viso e la texture dei capelli', price: '€35' },
+        { name: 'Taglio con Consulenza Personalizzata', description: 'Consulenza approfondita e taglio studiato per valorizzare i tuoi lineamenti', price: '€45' },
+        { name: 'Taglio Restyling', description: 'Cambio look completo con consulenza e studio del nuovo stile', price: '€50' },
+        { name: 'Taglio Spuntatura / Mantenimento', description: 'Mantenimento della forma con leggera spuntatura', price: '€25' },
+        { name: 'Taglio Bambina / Teen', description: 'Taglio dedicato alle più giovani, con attenzione particolare alla praticità', price: '€25' },
+        { name: 'Taglio Frangia', description: 'Taglio o sistemazione della frangia', price: '€15' }
       ]
     },
     {
       category: 'Servizi Styling',
       items: [
-        { name: 'Rifinitura Styling', description: 'Modellatura e rifinitura dello stile', price: '€15' },
-        { name: 'Styling Completo', description: 'Modellatura e trattamento con prodotti premium', price: '€20' },
-        { name: 'Piega Tradizionale', description: 'Piega classica con prodotti professionali', price: '€25' },
-        { name: 'Trattamento Luxury', description: 'Styling premium con prodotti di alta gamma', price: '€35' }
+        { name: 'Piega Professionale', description: 'Piega con prodotti professionali e finish personalizzato', price: '€25' },
+        { name: 'Piega con Piastra / Ferro', description: 'Styling elaborato con strumenti termici professionali', price: '€35' },
+        { name: 'Acconciatura per Eventi', description: 'Acconciatura elegante per cerimonie ed eventi speciali', price: '€60' },
+        { name: 'Piega con Trattamento Idratante', description: 'Piega con applicazione di trattamento intensivo idratante', price: '€35' },
+        { name: 'Piega Veloce (Express)', description: 'Piega rapida per un look naturale', price: '€20' },
+        { name: 'Laminazione Capelli', description: 'Trattamento illuminante che dona lucentezza e disciplina', price: '€80' }
       ]
     },
     {
       category: 'Pacchetti Combinati',
       items: [
-        { name: 'Taglio & Styling', description: 'Combinazione di taglio capelli e servizio styling', price: '€40' },
-        { name: 'Pacchetto VIP', description: 'Taglio, styling e trattamento viso completo', price: '€65' },
-        { name: 'Padre & Figlio', description: 'Taglio per padre e figlio (sotto i 12 anni)', price: '€45' },
-        { name: 'Sposo', description: 'Pacchetto completo per il giorno speciale', price: '€75' }
+        { name: 'Taglio + Piega', description: 'Servizio completo di taglio e piega professionale', price: '€55' },
+        { name: 'Colore + Piega', description: 'Colorazione personalizzata con piega finale', price: '€75' },
+        { name: 'Taglio + Colore + Piega', description: 'Servizio completo di taglio, colore e piega', price: '€95' },
+        { name: 'Balayage + Tonalizzante + Piega', description: 'Tecnica di schiaritura naturale con tonalizzazione', price: '€120' },
+        { name: 'Piega + Trattamento Ristrutturante', description: 'Trattamento intensivo con piega finale', price: '€50' },
+        { name: 'Acconciatura + Trucco Evento', description: 'Look completo per eventi speciali', price: '€90' }
       ]
     },
     {
       category: 'Trattamenti Speciali',
       items: [
-        { name: 'Colorazione', description: 'Colorazione professionale per capelli', price: 'da €40' },
-        { name: 'Trattamento Viso', description: 'Pulizia e idratazione profonda del viso', price: '€30' },
-        { name: 'Massaggio Testa', description: 'Massaggio rilassante del cuoio capelluto', price: '€20' },
-        { name: 'Maschera Nutriente', description: 'Trattamento intensivo per capelli', price: '€25' }
+        { name: 'Trattamenti Lifting Anti Età', description: 'Trattamento innovativo per capelli danneggiati e stressati', price: '€85' },
+        { name: 'Lipo - Draining Bodywrap', description: 'Trattamento drenante e detossinante per il cuoio capelluto', price: '€70' },
+        { name: 'Shine On', description: 'Trattamento illuminante per capelli spenti e opachi', price: '€55' },
+        { name: 'Nanoplex Arginina', description: 'Trattamento ristrutturante profondo con tecnologia Nanoplex', price: '€90' },
+        { name: 'Wondher Repair', description: 'Trattamento riparatore intensivo per capelli molto danneggiati', price: '€75' },
+        { name: 'Massaggio Kobido con Coppettazione', description: 'Massaggio tradizionale giapponese per il viso e cuoio capelluto', price: '€65' }
       ]
     }
   ];

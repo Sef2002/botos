@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Navbar: React.FC = () => {
@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <NavLink to="/shop" className="btn btn-outline text-sm">SHOP</NavLink>
-            <a href="#" className="btn btn-primary text-sm">PRENOTA</a>
+            <Link to="/prenota" className="btn btn-primary text-sm">PRENOTA</Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -120,7 +120,7 @@ const Navbar: React.FC = () => {
           </NavLink>
           <div className="flex flex-col space-y-4 pt-6">
             <NavLink to="/shop" className="btn btn-outline text-center" onClick={() => setIsOpen(false)}>SHOP</NavLink>
-            <a href="#" className="btn btn-primary text-center" onClick={() => setIsOpen(false)}>PRENOTA</a>
+            <Link to="/prenota" className="btn btn-primary text-center" onClick={() => setIsOpen(false)}>PRENOTA</Link>
           </div>
         </div>
       </div>

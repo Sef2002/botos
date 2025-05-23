@@ -99,12 +99,12 @@ const ShopPage: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="bg-[#1b1b1b] p-6 border-b border-l border-r border-gray-800 group-hover:border-gold transition-all">
+                <div className="bg-white p-6 border-b border-l border-r border-gray-200 group-hover:border-gold transition-all">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-heading">{product.name}</h3>
+                    <h3 className="text-xl font-heading text-black">{product.name}</h3>
                     <span className="text-gold font-heading">€{product.price}</span>
                   </div>
-                  <p className="text-gray-400 text-sm mb-4">{product.description}</p>
+                  <p className="text-gray-600 text-sm mb-4">{product.description}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-gold text-sm">{product.category}</span>
                     <button className="btn btn-outline flex items-center gap-2 text-sm py-1">

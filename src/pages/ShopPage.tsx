@@ -22,25 +22,25 @@ const ShopPage: React.FC = () => {
 
   const products = [
     {
-      name: "Balsamo Idratante",
-      description: "Balsamo professionale per capelli setosi",
-      price: "26,00",
+      name: "WondHer Detox",
+      description: "Trattamento detox professionale per capelli",
+      price: "32,00",
       image: "/assets/product1.png",
-      category: "Balsamo"
+      category: "Trattamenti"
     },
     {
-      name: "Gel Modellante",
-      description: "Gel a tenuta forte per styling duraturo",
-      price: "24,00",
+      name: "Perfect Form",
+      description: "Crema modellante per styling perfetto",
+      price: "28,00",
       image: "/assets/product2.png",
       category: "Styling"
     },
     {
-      name: "Pomata Opaca",
-      description: "Pomata modellante effetto opaco",
-      price: "28,00",
+      name: "Luminity",
+      description: "Siero illuminante per capelli brillanti",
+      price: "35,00",
       image: "/assets/product3.png",
-      category: "Styling"
+      category: "Trattamenti"
     },
     {
       name: "Shampoo Professionale",

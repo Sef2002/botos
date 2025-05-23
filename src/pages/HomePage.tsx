@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-heading font-bold mb-2 fade-in" style={{ '--delay': '100ms' } as React.CSSProperties}>
-              UNIQUE STYLE
+              LE JOLIE
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 mb-4 max-w-xl fade-in" style={{ '--delay': '200ms' } as React.CSSProperties}>
               Ci dedichiamo ogni giorno a valorizzare ogni sfumatura del tuo stile.
@@ -55,7 +55,7 @@ const HomePage: React.FC = () => {
             <div className="fade-in">
               <h2 className="section-title">La Nostra Storia</h2>
               <p className="text-gray-300 mb-8">
-                Nel cuore di Treviglio, Unique Style rappresenta l'evoluzione del concetto di salone di bellezza. Inaugurato con la visione di portare un tocco di innovazione nella storica città bergamasca, il nostro salone combina tecniche all'avanguardia con l'attenzione personalizzata che ogni cliente merita.
+                Nel cuore di Treviglio, Le Jolie rappresenta l'evoluzione del concetto di salone di bellezza. Inaugurato con la visione di portare un tocco di innovazione nella storica città bergamasca, il nostro salone combina tecniche all'avanguardia con l'attenzione personalizzata che ogni cliente merita.
               </p>
               <p className="text-gray-300 mb-8">
                 La nostra filosofia si basa sulla convinzione che ogni persona meriti un'esperienza su misura. Con un team di professionisti costantemente aggiornati sulle ultime tendenze e tecniche, offriamo servizi che vanno oltre il semplice taglio, creando look che riflettono la personalità unica di ogni cliente.
@@ -65,7 +65,7 @@ const HomePage: React.FC = () => {
               <div className="space-y-4">
                 <img 
                   src="/assets/story1.png" 
-                  alt="Unique Style al lavoro" 
+                  alt="Le Jolie al lavoro" 
                   className="w-full h-48 sm:h-64 object-cover"
                 />
                 <img 
@@ -103,19 +103,19 @@ const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: 'Taglio Classico',
-                description: 'Un taglio tradizionale eseguito con forbici e pettine, adatto a chi cerca uno stile raffinato.',
-                price: '€25'
+                title: 'Hair Style',
+                description: 'Servizio completo di styling per ogni tipo di capello, con tecniche innovative e prodotti di alta qualità.',
+                price: '€30'
               },
               {
-                title: 'Piega Moderna',
-                description: 'Trattamento completo che include lavaggio, massaggio e piega personalizzata.',
-                price: '€20'
+                title: 'Trattamenti lifting anti-età',
+                description: 'Trattamento professionale per contrastare i segni del tempo e donare nuova vita ai tuoi capelli.',
+                price: '€45'
               },
               {
-                title: "Rituale Unique Style",
-                description: 'Un massaggio alla cute, prodotti di qualità e tecniche di styling avanzate donano ai tuoi capelli volume, luminosità e durata.',
-                price: '€25'
+                title: 'Nanoplex arginina',
+                description: 'Innovativo trattamento ristrutturante che ripara e protegge i capelli danneggiati.',
+                price: '€55'
               }
             ].map((service, index) => (
               <div 
@@ -155,7 +155,7 @@ const HomePage: React.FC = () => {
             <div className="col-span-2 row-span-2">
               <img 
                 src="/assets/photo1.png" 
-                alt="Unique Style che dà una rifinitura" 
+                alt="Le Jolie che dà una rifinitura" 
                 className="w-full h-full object-cover"
               />
             </div>

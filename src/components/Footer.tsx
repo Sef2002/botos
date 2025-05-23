@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 md:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h4 className="text-2xl font-heading mb-4 text-white">UNIQUE STYLE</h4>
+            <h4 className="text-2xl font-heading mb-4 text-white">LE JOLIE</h4>
             <p className="text-gray-400 mb-6">
               Il miglior salone nella città di Treviglio, dove tradizione e modernità si incontrano per offrire servizi di altissima qualità.
             </p>
@@ -63,23 +63,23 @@ const Footer: React.FC = () => {
             <div className="space-y-4 text-gray-400">
               <p className="flex flex-col">
                 <span className="text-gold mb-1">Indirizzo</span>
-                <span>Via Roma, 9</span>
+                <span>Via Torquato Tasso, 29</span>
                 <span>24047 Treviglio BG</span>
               </p>
               <p className="flex flex-col">
                 <span className="text-gold mb-1">Telefono</span>
-                <a href="tel:3923234727" className="hover:text-gold transition-colors">392 323 4727</a>
+                <a href="tel:3513700970" className="hover:text-gold transition-colors">351 370 0970</a>
               </p>
               <p className="flex flex-col">
                 <span className="text-gold mb-1">Email</span>
-                <a href="mailto:uniquestyle@gmail.com" className="hover:text-gold transition-colors">uniquestyle@gmail.com</a>
+                <a href="mailto:lejolietreviglio@gmail.com" className="hover:text-gold transition-colors">lejolietreviglio@gmail.com</a>
               </p>
             </div>
           </div>
         </div>
         
         <div className="border-t border-gray-800 mt-10 pt-6 text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center">
-          <p>© 2025 Unique Style. Tutti i diritti riservati.</p>
+          <p>© 2025 Le Jolie. Tutti i diritti riservati.</p>
           <div className="mt-4 md:mt-0">
             <a href="#" className="hover:text-gold transition-colors mr-6">Privacy Policy</a>
             <a href="#" className="hover:text-gold transition-colors">Termini di Servizio</a>

@@ -26,14 +26,7 @@ const GalleryPage: React.FC = () => {
     { id: 2, category: 'styling', image: '/assets/photo2.png', title: 'Styling Definito' },
     { id: 3, category: 'haircuts', image: '/assets/photo3.png', title: 'Taglio Business' },
     { id: 4, category: 'salon', image: '/assets/photo4.png', title: 'Il Nostro Spazio' },
-    { id: 5, category: 'styling', image: '/assets/photo5.png', title: 'Rifinitura Styling' },
-    { id: 6, category: 'haircuts', image: '/assets/photo6.png', title: 'Stile Elegante' },
-    { id: 7, category: 'salon', image: '/assets/story1.png', title: 'Strumenti Professionali' },
-    { id: 8, category: 'haircuts', image: '/assets/story2.png', title: 'Taglio Classico' },
-    { id: 9, category: 'styling', image: '/assets/story3.png', title: 'Styling Lungo' },
-    { id: 10, category: 'salon', image: '/assets/story4.png', title: 'Ambiente Elegante' },
-    { id: 11, category: 'haircuts', image: '/assets/photo1.png', title: 'Sfumatura Precisa' },
-    { id: 12, category: 'styling', image: '/assets/photo2.png', title: 'Styling Tradizionale' }
+    { id: 5, category: 'styling', image: '/assets/photo5.png', title: 'Rifinitura Styling' }
   ];
 
   const filteredGallery = selectedCategory === 'all'
@@ -116,8 +109,8 @@ const GalleryPage: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-2 fade-in">
-            {['/assets/photo1.png', '/assets/photo2.png', '/assets/photo3.png', '/assets/photo4.png', '/assets/photo5.png', '/assets/photo6.png'].map((image, index) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 fade-in">
+            {['/assets/photo1.png', '/assets/photo2.png', '/assets/photo3.png', '/assets/photo4.png', '/assets/photo5.png'].map((image, index) => (
               <div key={index} className="group relative overflow-hidden">
                 <img 
                   src={image}
@@ -128,7 +121,7 @@ const GalleryPage: React.FC = () => {
                   href="#" 
                   className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                 >
-                  <span className="text-white text-xl">@uniquestyle</span>
+                  <span className="text-white text-xl">@lejolie</span>
                 </a>
               </div>
             ))}

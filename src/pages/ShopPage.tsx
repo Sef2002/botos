@@ -68,12 +68,12 @@ const ShopPage: React.FC = () => {
   return (
     <main className="pt-24">
       {/* Hero Section */}
-      <section className="py-16 bg-zinc-900">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center mb-10 fade-in">
             <h5 className="text-gold tracking-widest uppercase mb-2">Prodotti Professionali</h5>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6">SHOP</h1>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6 text-brand">SHOP</h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Scopri la nostra selezione di prodotti professionali per la cura dei tuoi capelli.
               Qualità garantita per risultati eccezionali.
             </p>
@@ -82,7 +82,7 @@ const ShopPage: React.FC = () => {
       </section>
 
       {/* Products Grid */}
-      <section className="py-16 bg-black">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product, index) => (
@@ -99,9 +99,9 @@ const ShopPage: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="bg-[#1b1b1b] p-6 border-b border-l border-r border-gray-800 group-hover:border-gold transition-all">
+                <div className="bg-brand p-6 border-b border-l border-r border-gray-800 group-hover:border-gold transition-all">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-heading">{product.name}</h3>
+                    <h3 className="text-xl font-heading text-white">{product.name}</h3>
                     <span className="text-gold font-heading">€{product.price}</span>
                   </div>
                   <p className="text-gray-400 text-sm mb-4">{product.description}</p>
@@ -120,10 +120,10 @@ const ShopPage: React.FC = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-zinc-900">
+      <section className="py-20 bg-brand">
         <div className="container mx-auto px-4 md:px-8 text-center">
           <div className="max-w-2xl mx-auto fade-in">
-            <h2 className="text-4xl font-heading font-bold mb-6">Hai Bisogno di Consigli?</h2>
+            <h2 className="text-4xl font-heading font-bold mb-6 text-white">Hai Bisogno di Consigli?</h2>
             <p className="text-lg text-gray-300 mb-8">
               I nostri esperti sono a tua disposizione per guidarti nella scelta dei prodotti più adatti alle tue esigenze.
             </p>

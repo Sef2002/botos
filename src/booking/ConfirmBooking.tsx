@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Calendar, Clock, User, Mail, Phone } from 'lucide-react';
+import { Calendar, Clock, User, Mail, Phone, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Popover } from '@headlessui/react';
+import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameMonth, isSameDay } from 'date-fns';
 
 const ConfirmBooking: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedDate, setSelectedDate] = useState<string>('');
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [formData, setFormData] = useState({
     name: '',
@@ -14,9 +16,8 @@ const ConfirmBooking: React.FC = () => {
     birthdate: ''
   });
 
-  const availableTimes = [
-    '10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00', '18:00'
-  ];
+  const availableTimes = ['10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+  const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,12 +25,76 @@ const ConfirmBooking: React.FC = () => {
       navigate('/prenota/successo', {
         state: {
           ...location.state,
-          date: selectedDate,
+          date: format(selectedDate, 'yyyy-MM-dd'),
           time: selectedTime,
           customer: formData
         }
       });
     }
+  };
+
+  const renderCalendar = () => {
+    const monthStart = startOfMonth(currentMonth);
+    const monthEnd = endOfMonth(monthStart);
+    const startDate = startOfWeek(monthStart, { weekStartsOn: 1 });
+    const endDate = endOfWeek(monthEnd, { weekStartsOn: 1 });
+
+    const rows = [];
+    let days = [];
+    let day = startDate;
+
+    while (day <= endDate) {
+      for (let i = 0; i < 7; i++) {
+        const cloneDay = day;
+        const isToday = isSameDay(cloneDay, new Date());
+        const isSelected = selectedDate && isSameDay(cloneDay, selectedDate);
+
+        days.push(
+          <div
+            key={cloneDay.toString()}
+            className={`text-center p-2 rounded-lg cursor-pointer text-sm transition-all
+              ${
+                !isSameMonth(cloneDay, monthStart)
+                  ? 'text-gray-500'
+                  : isSelected
+                  ? 'bg-gold text-black'
+                  : 'text-white hover:bg-gold hover:text-black'
+              }`}
+            onClick={() => setSelectedDate(cloneDay)}
+          >
+            {format(cloneDay, 'd')}
+          </div>
+        );
+        day = addDays(day, 1);
+      }
+
+      rows.push(
+        <div key={day.toString()} className="grid grid-cols-7 gap-1">
+          {days}
+        </div>
+      );
+      days = [];
+    }
+
+    return (
+      <div className="bg-zinc-900 p-4 rounded-lg shadow-lg border border-gray-800 w-full max-w-md">
+        <div className="flex justify-between items-center mb-4">
+          <button onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}>
+            <ChevronLeft className="text-gold w-5 h-5" />
+          </button>
+          <span className="text-white font-semibold">{format(currentMonth, 'MMMM yyyy')}</span>
+          <button onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}>
+            <ChevronRight className="text-gold w-5 h-5" />
+          </button>
+        </div>
+        <div className="grid grid-cols-7 text-xs text-center text-gold mb-1">
+          {['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'].map((day) => (
+            <div key={day}>{day}</div>
+          ))}
+        </div>
+        {rows}
+      </div>
+    );
   };
 
   return (
@@ -46,19 +111,19 @@ const ConfirmBooking: React.FC = () => {
 
           <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
             <div className="space-y-8">
-              {/* Date Selection */}
+              {/* Custom Calendar Picker */}
               <div className="bg-black p-6 border border-gray-800 rounded-lg">
                 <h3 className="text-xl font-heading mb-4 flex items-center gap-2">
                   <Calendar className="text-gold" />
                   <span>Seleziona Data</span>
                 </h3>
-                <input
-                  type="date"
-                  value={selectedDate}
-                  onChange={(e) => setSelectedDate(e.target.value)}
-                  className="w-full bg-zinc-900 border border-gray-800 text-white p-3 rounded-lg focus:border-gold focus:outline-none"
-                  required
-                />
+                <Popover className="relative">
+                  <Popover.Button className="w-full bg-zinc-900 border border-gray-800 text-white p-3 rounded-lg text-left flex justify-between items-center">
+                    {selectedDate ? format(selectedDate, 'dd/MM/yyyy') : 'gg/mm/aaaa'}
+                    <Calendar className="w-4 h-4 text-gold" />
+                  </Popover.Button>
+                  <Popover.Panel className="absolute z-10 mt-2">{renderCalendar()}</Popover.Panel>
+                </Popover>
               </div>
 
               {/* Time Selection */}

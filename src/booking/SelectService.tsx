@@ -1,35 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Scissors } from 'lucide-react';
-import { supabase } from '@/lib/supabase'; // Make sure this path matches your project
-
-interface Service {
-  id: string;
-  name: string;
-  description: string;
-  duration_min: number;
-  price: number;
-}
 
 const SelectService: React.FC = () => {
   const navigate = useNavigate();
   const [selectedService, setSelectedService] = useState<string>('');
-  const [services, setServices] = useState<Service[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      const { data, error } = await supabase.from('services').select('*');
-      if (error) {
-        console.error('Errore nel caricamento dei servizi:', error);
-      } else {
-        setServices(data);
-      }
-      setLoading(false);
-    };
-
-    fetchServices();
-  }, []);
+  const services = [
+    {
+      id: 'taglio-donna',
+      name: 'Taglio Donna',
+      duration: '45 min',
+      price: '€35',
+      description: 'Taglio personalizzato secondo la morfologia del viso e la texture dei capelli'
+    },
+    {
+      id: 'taglio-consulenza',
+      name: 'Taglio con Consulenza',
+      duration: '60 min',
+      price: '€45',
+      description: 'Consulenza approfondita e taglio studiato per valorizzare i tuoi lineamenti'
+    },
+    {
+      id: 'taglio-restyling',
+      name: 'Taglio Restyling',
+      duration: '75 min',
+      price: '€50',
+      description: 'Cambio look completo con consulenza e studio del nuovo stile'
+    }
+  ];
 
   const handleContinue = () => {
     if (selectedService) {
@@ -50,39 +49,35 @@ const SelectService: React.FC = () => {
           </div>
 
           <div className="max-w-3xl mx-auto">
-            {loading ? (
-              <p className="text-center text-gray-400">Caricamento servizi...</p>
-            ) : (
-              <div className="space-y-6">
-                {services.map((service) => (
-                  <div
-                    key={service.id}
-                    className={`p-6 border ${
-                      selectedService === service.id
-                        ? 'border-gold bg-gold bg-opacity-10'
-                        : 'border-gray-800 hover:border-gold'
-                    } rounded-lg cursor-pointer transition-all`}
-                    onClick={() => setSelectedService(service.id)}
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <h3 className="text-xl font-heading mb-2">{service.name}</h3>
-                        <p className="text-gray-400 mb-2">{service.description}</p>
-                        <div className="flex items-center gap-4 text-sm text-gold">
-                          <span>{service.duration_min} min</span>
-                          <span>€{service.price.toFixed(2)}</span>
-                        </div>
+            <div className="space-y-6">
+              {services.map((service) => (
+                <div
+                  key={service.id}
+                  className={`p-6 border ${
+                    selectedService === service.id
+                      ? 'border-gold bg-gold bg-opacity-10'
+                      : 'border-gray-800 hover:border-gold'
+                  } rounded-lg cursor-pointer transition-all`}
+                  onClick={() => setSelectedService(service.id)}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <h3 className="text-xl font-heading mb-2">{service.name}</h3>
+                      <p className="text-gray-400 mb-2">{service.description}</p>
+                      <div className="flex items-center gap-4 text-sm text-gold">
+                        <span>{service.duration}</span>
+                        <span>{service.price}</span>
                       </div>
-                      <Scissors
-                        className={`w-6 h-6 ${
-                          selectedService === service.id ? 'text-gold' : 'text-gray-500'
-                        }`}
-                      />
                     </div>
+                    <Scissors
+                      className={`w-6 h-6 ${
+                        selectedService === service.id ? 'text-gold' : 'text-gray-500'
+                      }`}
+                    />
                   </div>
-                ))}
-              </div>
-            )}
+                </div>
+              ))}
+            </div>
 
             <div className="mt-10 text-center">
               <button
@@ -102,4 +97,4 @@ const SelectService: React.FC = () => {
   );
 };
 
-export default SelectService;
+export default SelectService; 

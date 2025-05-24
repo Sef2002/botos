@@ -34,10 +34,10 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-heading font-bold mb-2 fade-in" style={{ '--delay': '100ms' } as React.CSSProperties}>
-              UNIQUE STYLE
+              PRESTIGE SALON
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 mb-4 max-w-xl fade-in italic" style={{ '--delay': '200ms' } as React.CSSProperties}>
-              "Unico: nel linguaggio filosofico l'individuo in quanto singolare. Irripetibile. Eccezionale. Non si può replicare"
+              "L'eccellenza nel mondo dell'hairstyling, dove ogni dettaglio conta"
             </p>
             <div className="w-20 h-[1px] bg-gold mb-8"></div>
             <div className="flex flex-wrap gap-4 fade-in" style={{ '--delay': '300ms' } as React.CSSProperties}>
@@ -55,7 +55,7 @@ const HomePage: React.FC = () => {
             <div className="fade-in">
               <h2 className="section-title">La Nostra Storia</h2>
               <p className="text-gray-300 mb-8">
-                Nel cuore di Treviglio, in Via Giacomo Sangalli 9/a, Unique Style è il punto di riferimento per chi desidera un'esperienza esclusiva, dove la cura del capello si unisce al relax e all'eleganza.
+                Nel cuore di Treviglio, in Via Giacomo Sangalli 9/a, Prestige Salon è il punto di riferimento per chi desidera un'esperienza esclusiva, dove la cura del capello si unisce al relax e all'eleganza.
               </p>
               <p className="text-gray-300 mb-8">
                 Ogni servizio è studiato per valorizzare la tua immagine con trattamenti di alta qualità, dalle colorazioni raffinate ai tagli su misura, fino ai rituali di benessere che rigenerano e illuminano la chioma. Il nostro team di hairstylist esperti ti guiderà nella scelta del look perfetto, con attenzione ai dettagli e un approccio innovativo.
@@ -65,7 +65,7 @@ const HomePage: React.FC = () => {
               <div className="space-y-4">
                 <img 
                   src="/assets/story1.png" 
-                  alt="Unique Style al lavoro" 
+                  alt="Prestige Salon al lavoro" 
                   className="w-full h-48 sm:h-64 object-cover"
                 />
                 <img 
@@ -155,7 +155,7 @@ const HomePage: React.FC = () => {
             <div className="col-span-2 row-span-2">
               <img 
                 src="/assets/photo1.png" 
-                alt="Unique Style al lavoro" 
+                alt="Prestige Salon al lavoro" 
                 className="w-full h-full object-cover"
               />
             </div>

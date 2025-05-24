@@ -1,12 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Calendar, Clock, User, Mail, Phone, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  Calendar as CalendarIcon,
+  Clock,
+  User,
+  Mail,
+  Phone,
+  ChevronLeft,
+  ChevronRight
+} from 'lucide-react';
 import { Popover } from '@headlessui/react';
-import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, isSameMonth, isSameDay } from 'date-fns';
+import {
+  format,
+  addMonths,
+  subMonths,
+  startOfMonth,
+  endOfMonth,
+  startOfWeek,
+  endOfWeek,
+  addDays,
+  isSameMonth,
+  isSameDay
+} from 'date-fns';
+import { supabase } from '@/lib/supabase';
 
 const ConfirmBooking: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const popoverRef = useRef<HTMLDivElement>(null);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [formData, setFormData] = useState({
@@ -19,18 +40,34 @@ const ConfirmBooking: React.FC = () => {
   const availableTimes = ['10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (selectedDate && selectedTime && formData.name && formData.email && formData.phone) {
-      navigate('/prenota/successo', {
-        state: {
-          ...location.state,
-          date: format(selectedDate, 'yyyy-MM-dd'),
-          time: selectedTime,
-          customer: formData
-        }
-      });
+    if (!selectedDate || !selectedTime || !formData.name || !formData.email || !formData.phone) return;
+
+    const { serviceId, barberId } = location.state;
+
+    const { error } = await supabase.from('appointments').insert([
+      {
+        service_id: serviceId,
+        barber_id: barberId,
+        customer_name: formData.name,
+        customer_email: formData.email,
+        customer_phone: formData.phone,
+        customer_birthdate: formData.birthdate || null,
+        appointment_date: format(selectedDate, 'yyyy-MM-dd'),
+        appointment_time: `${selectedTime}:00`,
+        duration_min: 40, // or fetch real duration from DB
+        appointment_status: 'in attesa',
+        paid: false
+      }
+    ]);
+
+    if (error) {
+      console.error('Errore nel salvataggio della prenotazione:', error);
+      return;
     }
+
+    navigate('/prenota/successo');
   };
 
   const renderCalendar = () => {
@@ -46,20 +83,16 @@ const ConfirmBooking: React.FC = () => {
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         const cloneDay = day;
-        const isToday = isSameDay(cloneDay, new Date());
         const isSelected = selectedDate && isSameDay(cloneDay, selectedDate);
-
         days.push(
           <div
             key={cloneDay.toString()}
             className={`text-center p-2 rounded-lg cursor-pointer text-sm transition-all
-              ${
-                !isSameMonth(cloneDay, monthStart)
-                  ? 'text-gray-500'
-                  : isSelected
-                  ? 'bg-gold text-black'
-                  : 'text-white hover:bg-gold hover:text-black'
-              }`}
+              ${!isSameMonth(cloneDay, monthStart)
+                ? 'text-gray-500'
+                : isSelected
+                ? 'bg-gold text-black'
+                : 'text-white hover:bg-gold hover:text-black'}`}
             onClick={() => setSelectedDate(cloneDay)}
           >
             {format(cloneDay, 'd')}
@@ -67,7 +100,6 @@ const ConfirmBooking: React.FC = () => {
         );
         day = addDays(day, 1);
       }
-
       rows.push(
         <div key={day.toString()} className="grid grid-cols-7 gap-1">
           {days}
@@ -77,13 +109,25 @@ const ConfirmBooking: React.FC = () => {
     }
 
     return (
-      <div className="bg-zinc-900 p-4 rounded-lg shadow-lg border border-gray-800 w-full max-w-md">
+      <div className="bg-zinc-900 p-4 rounded-lg shadow-lg border border-gray-800 w-full max-w-md" ref={popoverRef}>
         <div className="flex justify-between items-center mb-4">
-          <button onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentMonth(subMonths(currentMonth, 1));
+            }}
+          >
             <ChevronLeft className="text-gold w-5 h-5" />
           </button>
           <span className="text-white font-semibold">{format(currentMonth, 'MMMM yyyy')}</span>
-          <button onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentMonth(addMonths(currentMonth, 1));
+            }}
+          >
             <ChevronRight className="text-gold w-5 h-5" />
           </button>
         </div>
@@ -111,16 +155,16 @@ const ConfirmBooking: React.FC = () => {
 
           <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
             <div className="space-y-8">
-              {/* Custom Calendar Picker */}
+              {/* Calendar Picker */}
               <div className="bg-black p-6 border border-gray-800 rounded-lg">
                 <h3 className="text-xl font-heading mb-4 flex items-center gap-2">
-                  <Calendar className="text-gold" />
+                  <CalendarIcon className="text-gold" />
                   <span>Seleziona Data</span>
                 </h3>
                 <Popover className="relative">
                   <Popover.Button className="w-full bg-zinc-900 border border-gray-800 text-white p-3 rounded-lg text-left flex justify-between items-center">
                     {selectedDate ? format(selectedDate, 'dd/MM/yyyy') : 'gg/mm/aaaa'}
-                    <Calendar className="w-4 h-4 text-gold" />
+                    <CalendarIcon className="w-4 h-4 text-gold" />
                   </Popover.Button>
                   <Popover.Panel className="absolute z-10 mt-2">{renderCalendar()}</Popover.Panel>
                 </Popover>
@@ -150,52 +194,29 @@ const ConfirmBooking: React.FC = () => {
                 </div>
               </div>
 
-              {/* Customer Information */}
+              {/* Customer Info */}
               <div className="bg-black p-6 border border-gray-800 rounded-lg">
                 <h3 className="text-xl font-heading mb-4">I Tuoi Dati</h3>
                 <div className="space-y-4">
+                  {['name', 'email', 'phone'].map((field) => (
+                    <div key={field}>
+                      <label className="flex items-center gap-2 text-sm text-gray-300 mb-2">
+                        {field === 'name' ? <User size={16} className="text-gold" /> : field === 'email' ? <Mail size={16} className="text-gold" /> : <Phone size={16} className="text-gold" />}
+                        {field === 'name' ? 'Nome e Cognome' : field === 'email' ? 'Email' : 'Telefono'}
+                      </label>
+                      <input
+                        type={field === 'email' ? 'email' : field === 'phone' ? 'tel' : 'text'}
+                        value={formData[field]}
+                        onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
+                        required
+                        className="w-full bg-zinc-900 border border-gray-800 text-white p-3 rounded-lg focus:border-gold focus:outline-none"
+                      />
+                    </div>
+                  ))}
+
                   <div>
                     <label className="flex items-center gap-2 text-sm text-gray-300 mb-2">
-                      <User size={16} className="text-gold" />
-                      Nome e Cognome
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-zinc-900 border border-gray-800 text-white p-3 rounded-lg focus:border-gold focus:outline-none"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="flex items-center gap-2 text-sm text-gray-300 mb-2">
-                      <Mail size={16} className="text-gold" />
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-zinc-900 border border-gray-800 text-white p-3 rounded-lg focus:border-gold focus:outline-none"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="flex items-center gap-2 text-sm text-gray-300 mb-2">
-                      <Phone size={16} className="text-gold" />
-                      Telefono
-                    </label>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-zinc-900 border border-gray-800 text-white p-3 rounded-lg focus:border-gold focus:outline-none"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="flex items-center gap-2 text-sm text-gray-300 mb-2">
-                      <Calendar size={16} className="text-gold" />
+                      <CalendarIcon size={16} className="text-gold" />
                       Data di Nascita (opzionale)
                     </label>
                     <input
@@ -210,10 +231,7 @@ const ConfirmBooking: React.FC = () => {
             </div>
 
             <div className="mt-10 text-center">
-              <button
-                type="submit"
-                className="btn btn-primary text-lg px-8 py-3"
-              >
+              <button type="submit" className="btn btn-primary text-lg px-8 py-3">
                 Conferma Prenotazione
               </button>
             </div>

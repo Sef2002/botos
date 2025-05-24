@@ -55,7 +55,7 @@ const HomePage: React.FC = () => {
             <div className="fade-in">
               <h2 className="section-title">La Nostra Storia</h2>
               <p className="text-gray-300 mb-8">
-                Nel cuore di Treviglio, in Via Roma 9, Unique Style è il punto di riferimento per chi desidera un'esperienza esclusiva, dove la cura del capello si unisce al relax e all'eleganza.
+                Nel cuore di Treviglio, in Via Giacomo Sangalli 9/a, Unique Style è il punto di riferimento per chi desidera un'esperienza esclusiva, dove la cura del capello si unisce al relax e all'eleganza.
               </p>
               <p className="text-gray-300 mb-8">
                 Ogni servizio è studiato per valorizzare la tua immagine con trattamenti di alta qualità, dalle colorazioni raffinate ai tagli su misura, fino ai rituali di benessere che rigenerano e illuminano la chioma. Il nostro team di hairstylist esperti ti guiderà nella scelta del look perfetto, con attenzione ai dettagli e un approccio innovativo.

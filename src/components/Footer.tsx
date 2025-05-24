@@ -63,12 +63,12 @@ const Footer: React.FC = () => {
             <div className="space-y-4 text-gray-400">
               <p className="flex flex-col">
                 <span className="text-gold mb-1">Indirizzo</span>
-                <span>Via Roma, 9</span>
+                <span>Via Giacomo Sangalli, 9/a</span>
                 <span>24047 Treviglio BG</span>
               </p>
               <p className="flex flex-col">
                 <span className="text-gold mb-1">Telefono</span>
-                <a href="tel:3923234727" className="hover:text-gold transition-colors">392 323 4727</a>
+                <a href="tel:0363660248" className="hover:text-gold transition-colors">0363 660248</a>
               </p>
               <p className="flex flex-col">
                 <span className="text-gold mb-1">Email</span>

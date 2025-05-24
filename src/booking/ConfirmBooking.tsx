@@ -10,7 +10,8 @@ const ConfirmBooking: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    birthdate: ''
   });
 
   const availableTimes = [
@@ -125,6 +126,18 @@ const ConfirmBooking: React.FC = () => {
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full bg-zinc-900 border border-gray-800 text-white p-3 rounded-lg focus:border-gold focus:outline-none"
                       required
+                    />
+                  </div>
+                  <div>
+                    <label className="flex items-center gap-2 text-sm text-gray-300 mb-2">
+                      <Calendar size={16} className="text-gold" />
+                      Data di Nascita (opzionale)
+                    </label>
+                    <input
+                      type="date"
+                      value={formData.birthdate}
+                      onChange={(e) => setFormData({ ...formData, birthdate: e.target.value })}
+                      className="w-full bg-zinc-900 border border-gray-800 text-white p-3 rounded-lg focus:border-gold focus:outline-none"
                     />
                   </div>
                 </div>

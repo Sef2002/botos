@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
               LE JOLIE
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 mb-4 max-w-xl fade-in" style={{ '--delay': '200ms' } as React.CSSProperties}>
-              Ci dedichiamo ogni giorno a valorizzare ogni sfumatura del tuo stile.
+              Ogni giorno trasformiamo la bellezza in arte, esaltando con cura ogni dettaglio del tuo stile.
             </p>
             <div className="w-20 h-[1px] bg-gold mb-8"></div>
             <div className="flex flex-wrap gap-4 fade-in" style={{ '--delay': '300ms' } as React.CSSProperties}>

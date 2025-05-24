@@ -1,35 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { User } from 'lucide-react';
+import { supabase } from '@/lib/supabase'; // Assicurati che questo path sia corretto
 
 const SelectBarber: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [selectedBarber, setSelectedBarber] = useState<string>('');
+  const [barbers, setBarbers] = useState<any[]>([]);
 
-  const barbers = [
-    {
-      id: 'marco',
-      name: 'Marco Rossi',
-      role: 'Master Stylist',
-      experience: '15 anni di esperienza',
-      specialties: ['Tagli moderni', 'Colorazioni creative']
-    },
-    {
-      id: 'laura',
-      name: 'Laura Bianchi',
-      role: 'Senior Stylist',
-      experience: '10 anni di esperienza',
-      specialties: ['Acconciature', 'Trattamenti']
-    },
-    {
-      id: 'giovanni',
-      name: 'Giovanni Verdi',
-      role: 'Style Expert',
-      experience: '8 anni di esperienza',
-      specialties: ['Tagli classici', 'Barba']
-    }
-  ];
+  useEffect(() => {
+    const fetchBarbers = async () => {
+      const { data, error } = await supabase.from('barbers').select('*');
+      if (!error && data) {
+        // Mock fields if needed for display
+        const enriched = data.map((barber) => ({
+          id: barber.id,
+          name: barber.name,
+          role: 'Stylist', // You can add this in DB later
+          experience: 'Esperto/a in stile', // Default placeholder
+          specialties: ['Taglio', 'Colore'] // Optional default
+        }));
+        setBarbers(enriched);
+      }
+    };
+    fetchBarbers();
+  }, []);
 
   const handleContinue = () => {
     if (selectedBarber) {

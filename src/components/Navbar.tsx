@@ -28,7 +28,12 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex justify-between items-center bg-white rounded-[40px] px-8 py-4">
           <NavLink to="/" className="text-2xl font-heading text-black">
-            <img src="/assets/logo.png" alt="Prestige Salon Logo" className="h-12" />
+            <img 
+              src="/assets/logo.png" 
+              alt="Prestige Salon Logo" 
+              className="h-12 transform scale-125" 
+              style={{ transformOrigin: 'left center' }}
+            />
           </NavLink>
 
           {/* Desktop Menu */}

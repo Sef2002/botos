@@ -26,16 +26,9 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-8">
-        <nav className="flex justify-between items-center bg-white/95 backdrop-blur-sm rounded-[40px] px-8 py-4 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
-          <NavLink to="/" className="text-2xl font-heading text-black relative">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-transparent blur-sm"></div>
-              <img 
-                src="/assets/logo.png" 
-                alt="Prestige Salon Logo" 
-                className="h-16 relative z-10" 
-              />
-            </div>
+        <nav className="flex justify-between items-center bg-white rounded-[40px] px-8 py-4">
+          <NavLink to="/" className="text-2xl font-heading text-black">
+            <img src="/assets/logo.png" alt="Prestige Salon Logo" className="h-12" />
           </NavLink>
 
           {/* Desktop Menu */}

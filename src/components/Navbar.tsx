@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => { 
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setScrolled(true);
@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex justify-between items-center bg-white rounded-[40px] px-8 py-4">
           <NavLink to="/" className="text-2xl font-heading text-black">
-            <img src="/assets/logo.png" alt="Prestige Salon Logo" className="h-16" />
+            <img src="/assets/logo.png" alt="Prestige Salon Logo" className="h-12" />
           </NavLink>
 
           {/* Desktop Menu */}

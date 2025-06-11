@@ -12,13 +12,13 @@ const SelectTimeSlot = () => {
   const storedServiceId = localStorage.getItem('selectedServiceId');
 
   const [date, setDate] = useState(new Date());
-  const [slots, setSlots] = useState<{ label: string; value: string }[]>([]);
+  const [perfectSlots, setPerfectSlots] = useState<{ label: string; value: string }[]>([]);
+  const [otherSlots, setOtherSlots] = useState<{ label: string; value: string }[]>([]);
   const [selectedTime, setSelectedTime] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [duration, setDuration] = useState(30); // default fallback
 
-  // Fetch the service duration from Supabase
   useEffect(() => {
     if (!storedServiceId) return;
 
@@ -37,18 +37,17 @@ const SelectTimeSlot = () => {
     fetchServiceDuration();
   }, [storedServiceId]);
 
-  // Fetch available time slots
   useEffect(() => {
     if (!storedServiceId || !selectedBarber || selectedBarber === 'any') {
-      setSlots([]);
+      setPerfectSlots([]);
+      setOtherSlots([]);
       return;
     }
 
     const dateStr = format(date, 'yyyy-MM-dd');
     getAvailableTimeSlots(selectedBarber.id, dateStr, duration).then((result) => {
-      // Combine perfect and other slots into a single array
-      const combinedSlots = [...result.perfect, ...result.other];
-      setSlots(combinedSlots);
+      setPerfectSlots(result.perfect);
+      setOtherSlots(result.other);
     });
   }, [date, duration]);
 
@@ -59,10 +58,7 @@ const SelectTimeSlot = () => {
       .eq('appointment_date', dateStr)
       .eq('barber_id', barberId);
 
-    if (error) {
-      console.error('Error checking slot availability:', error);
-      return false;
-    }
+    if (error) return false;
 
     const toMinutes = (t: string) => {
       const [h, m] = t.split(':').map(Number);
@@ -72,13 +68,11 @@ const SelectTimeSlot = () => {
     const slotStart = toMinutes(time);
     const slotEnd = slotStart + duration;
 
-    for (const appt of appointments || []) {
-      const apptStart = toMinutes(appt.appointment_time);
-      const apptEnd = apptStart + appt.duration_min;
-      if (slotStart < apptEnd && slotEnd > apptStart) return false;
-    }
-
-    return true;
+    return !(appointments || []).some(appt => {
+      const start = toMinutes(appt.appointment_time);
+      const end = start + appt.duration_min;
+      return slotStart < end && slotEnd > start;
+    });
   };
 
   const handleSubmit = async () => {
@@ -128,23 +122,51 @@ const SelectTimeSlot = () => {
         />
       </div>
 
-      <div className="grid grid-cols-3 gap-2 mb-6">
-        {slots.map((slot) => (
-          <button
-            key={slot.value}
-            className={`border rounded p-2 text-sm ${
-              selectedTime === slot.value ? 'bg-[#5D4037] text-white' : 'hover:bg-gray-100'
-            }`}
-            onClick={() => setSelectedTime(slot.value)}
-          >
-            {slot.label}
-          </button>
-        ))}
-        {slots.length === 0 && (
-          <p className="col-span-3 text-center text-gray-500">Nessun orario disponibile</p>
-        )}
-      </div>
+      {/* Slot Rendering */}
+      {perfectSlots.length > 0 && (
+        <>
+          <h2 className="text-lg font-semibold mb-2 text-center">ORARI DISPONIBILI CONSIGLIATI</h2>
+          <div className="grid grid-cols-3 gap-2 mb-6">
+            {perfectSlots.map((slot) => (
+              <button
+                key={slot.value}
+                className={`border rounded p-2 text-sm ${
+                  selectedTime === slot.value ? 'bg-[#5D4037] text-white' : 'hover:bg-gray-100'
+                }`}
+                onClick={() => setSelectedTime(slot.value)}
+              >
+                {slot.label}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
 
+      {(otherSlots.length > 0 || perfectSlots.length === 0) && (
+        <>
+          <h2 className="text-lg font-semibold mb-2 text-center">
+            {perfectSlots.length > 0 ? 'ALTRI ORARI DISPONIBILI' : 'ORARI DISPONIBILI'}
+          </h2>
+          <div className="grid grid-cols-3 gap-2 mb-6">
+            {otherSlots.map((slot) => (
+              <button
+                key={slot.value}
+                className={`border rounded p-2 text-sm ${
+                  selectedTime === slot.value ? 'bg-[#5D4037] text-white' : 'hover:bg-gray-100'
+                }`}
+                onClick={() => setSelectedTime(slot.value)}
+              >
+                {slot.label}
+              </button>
+            ))}
+            {perfectSlots.length === 0 && otherSlots.length === 0 && (
+              <p className="col-span-3 text-center text-gray-500">Nessun orario disponibile</p>
+            )}
+          </div>
+        </>
+      )}
+
+      {/* Form */}
       <div className="space-y-4 mb-6">
         <input
           type="text"

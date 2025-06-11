@@ -7,6 +7,9 @@ import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import GalleryPage from './pages/GalleryPage';
 import ShopPage from './shop/pages/ShopPage';
+import Checkout from './shop/checkout/Checkout';
+import CheckoutSuccess from './shop/checkout/Success';
+import CheckoutCancel from './shop/checkout/Cancel';
 
 import SelectService from './booking/SelectService';
 import SelectBarber from './booking/SelectBarber';
@@ -27,6 +30,9 @@ function App() {
             <Route path="/servizi" element={<ServicesPage />} />
             <Route path="/galleria" element={<GalleryPage />} />
             <Route path="/shop" element={<ShopPage />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout/success" element={<CheckoutSuccess />} />
+            <Route path="/checkout/cancel" element={<CheckoutCancel />} />
 
             {/* Booking flow */}
             <Route path="/prenota/servizio" element={<SelectService />} />

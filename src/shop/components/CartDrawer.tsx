@@ -1,5 +1,6 @@
 import React from "react";
 import { X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default function CartDrawer({ isOpen, onClose }: Props) {
+  const navigate = useNavigate();
   const { cartItems, updateQuantity, removeFromCart, cartTotal } = useCart();
 
   return (
@@ -63,7 +65,13 @@ export default function CartDrawer({ isOpen, onClose }: Props) {
           <span className="text-white font-semibold">Totale:</span>
           <span className="text-gold font-bold text-lg">€{cartTotal.toFixed(2)}</span>
         </div>
-        <button className="w-full bg-gold text-black font-semibold py-3 rounded hover:opacity-90 transition">
+        <button
+          className="w-full bg-gold text-black font-semibold py-3 rounded hover:opacity-90 transition"
+          onClick={() => {
+            onClose();
+            navigate('/checkout');
+          }}
+        >
           Procedi al Checkout
         </button>
       </div>

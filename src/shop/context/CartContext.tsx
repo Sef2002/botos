@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useState, useMemo, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useMemo,
+  ReactNode,
+  useEffect,
+} from "react";
 import { Product } from "../types/product";
 
 export interface CartItem {
@@ -19,6 +26,23 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  // Load cart from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem('cart');
+    if (stored) {
+      try {
+        setCartItems(JSON.parse(stored));
+      } catch {
+        /* ignore corrupt data */
+      }
+    }
+  }, []);
+
+  // Persist cart to localStorage
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (product: Product) => {
     setCartItems((prev) => {

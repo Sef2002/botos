@@ -1,10 +1,16 @@
 // src/shop/checkout/Checkout.tsx
 
 import React, { useState } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import { supabase } from '@/lib/supabase';
 import { useCart } from '@/shop/context/CartContext';
 
+const stripePromise = loadStripe(
+  import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string
+);
+
 const Checkout: React.FC = () => {
-  const { cartItems, totalPrice } = useCart();
+  const { cartItems, cartTotal, clearCart } = useCart();
   const [customer, setCustomer] = useState({
     name: '',
     email: '',
@@ -17,9 +23,27 @@ const Checkout: React.FC = () => {
   };
 
   const handleSubmit = async () => {
-    // This is where you’ll later create the Stripe session
-    console.log('Checkout with:', customer);
-    console.log('Cart:', cartItems);
+    const stripe = await stripePromise;
+    if (!stripe) return;
+
+    const items = cartItems.map(({ product, quantity }) => ({
+      name: product.name,
+      price: product.price,
+      quantity,
+    }));
+
+    const { data, error } = await supabase.functions.invoke('create-checkout', {
+      body: { items, origin: window.location.origin },
+    });
+
+    if (error) {
+      console.error('Stripe session error:', error);
+      return;
+    }
+
+    const sessionId = (data as { id: string }).id;
+    await stripe.redirectToCheckout({ sessionId });
+    clearCart();
   };
 
   return (
@@ -57,19 +81,18 @@ const Checkout: React.FC = () => {
       <div className="space-y-6">
         <h2 className="text-2xl font-bold">Riepilogo Ordine</h2>
         <ul className="divide-y divide-gray-700">
-          {cartItems.map(item => (
-            <li key={item.id} className="py-4 flex justify-between">
+          {cartItems.map(({ product, quantity }) => (
+            <li key={product.id} className="py-4 flex justify-between">
               <div>
-                <p className="font-semibold">{item.name}</p>
-                <p className="text-sm text-gray-400">Quantità: {item.quantity}</p>
+                <p className="font-semibold">{product.name}</p>
+                <p className="text-sm text-gray-400">Quantità: {quantity}</p>
               </div>
-              <p className="font-bold">€{(item.price * item.quantity).toFixed(2)}
-              </p>
+              <p className="font-bold">€{(product.price * quantity).toFixed(2)}</p>
             </li>
           ))}
         </ul>
         <div className="text-right text-xl font-bold">
-          Totale: €{totalPrice.toFixed(2)}
+          Totale: €{cartTotal.toFixed(2)}
         </div>
         <button
           onClick={handleSubmit}

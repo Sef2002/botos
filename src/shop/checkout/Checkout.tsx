@@ -1,16 +1,3 @@
-import { createClient } from '@supabase/supabase-js';
-
-// Expose the Supabase project URL so other modules can build REST and Edge
-// Function endpoints based on it.
-export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
-
-// Central Supabase client used across the app
-export const supabase = createClient(SUPABASE_URL, supabaseAnonKey);
-src/shop/checkout/Checkout.tsx
-+12
--10
-
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useCart } from '../context/CartContext';
@@ -44,7 +31,18 @@ const Checkout: React.FC = () => {
       return false;
     }
     if (!customer.email.trim()) {
- const Checkout: React.FC = () => {
+      setError('L\'email è obbligatoria');
+      return false;
+    }
+    if (!customer.phone.trim()) {
+      setError('Il telefono è obbligatorio');
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     
     if (!validateForm()) {
       return;

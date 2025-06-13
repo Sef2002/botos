@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe } from '@stripe/stripe-js'; 
 import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
-import { SUPABASE_URL } from '../../lib/supabase';
 
-const STRIPE_PK = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string | undefined;
-const stripePromise = STRIPE_PK ? loadStripe(STRIPE_PK) : Promise.resolve(null);
+const stripePromise = loadStripe(
+  import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string
+);
 
 const Checkout: React.FC = () => {
   const { cartItems, cartTotal, clearCart } = useCart();
@@ -31,7 +31,26 @@ const Checkout: React.FC = () => {
       return false;
     }
     if (!customer.email.trim()) {
- const Checkout: React.FC = () => {
+      setError('L\'email è obbligatoria');
+      return false;
+    }
+    if (!customer.phone.trim()) {
+      setError('Il telefono è obbligatorio');
+      return false;
+    }
+    if (!/\S+@\S+\.\S+/.test(customer.email)) {
+      setError('Inserisci un\'email valida');
+      return false;
+    }
+    if (cartItems.length === 0) {
+      setError('Il carrello è vuoto');
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     
     if (!validateForm()) {
       return;
@@ -57,14 +76,11 @@ const Checkout: React.FC = () => {
 
       console.log('Sending request to Edge Function with items:', items);
 
-      // Call the deployed Supabase Edge Function manually. Using fetch avoids
-      // issues with incorrect HTTP methods when invoking the function in some
-      // environments.
-      const response = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout`, {
-        method: 'POST',
+           // Call the deployed Supabase Edge Function using the configured Supabase URL
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify({
           items,
@@ -77,15 +93,15 @@ const Checkout: React.FC = () => {
         }),
       });
 
+      console.log('Edge Function response status:', response.status);
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         console.error('Edge Function error response:', errorData);
-        throw new Error(
-          `Errore del server: ${response.status} - ${errorData.error || 'Errore sconosciuto'}`,
-        );
+        throw new Error(`Errore del server: ${response.status} - ${errorData.error || 'Errore sconosciuto'}`);
       }
 
-      const data = (await response.json()) as { id?: string };
+      const data = await response.json();
       console.log('Edge Function response data:', data);
       
       if (!data.id) {
@@ -111,6 +127,7 @@ const Checkout: React.FC = () => {
       setError(`Errore durante il checkout: ${error instanceof Error ? error.message : 'Errore sconosciuto'}`);
     } finally {
       setLoading(false);
+    }
   };
 
   // Redirect to shop if cart is empty

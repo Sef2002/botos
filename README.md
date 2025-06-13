@@ -1,3 +1,7 @@
+
++3
+-0
+
 # Botos Shop Demo
 
 This project is a React application using Vite, Supabase and Stripe. It includes a simple shopping cart with checkout flow.

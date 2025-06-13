@@ -31,7 +31,7 @@ const Checkout: React.FC = () => {
       return false;
     }
     if (!customer.email.trim()) {
-@@ -54,77 +54,79 @@ const Checkout: React.FC = () => {
+ const Checkout: React.FC = () => {
     
     if (!validateForm()) {
       return;

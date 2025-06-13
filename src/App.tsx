@@ -16,11 +16,11 @@ import SelectBarber from './booking/SelectBarber';
 import SelectTimeSlot from './booking/SelectTimeSlot';
 import BookingSuccess from './booking/BookingSuccess';
 
-import { CartProvider } from './shop/context/CartContext'; // ✅ IMPORTED
+import { CartProvider } from './shop/context/CartContext';
 
 function App() {
   return (
-    <CartProvider> {/* ✅ WRAPS the entire app with cart logic */}
+    <CartProvider>
       <Router>
         <div className="font-primary bg-black text-white min-h-screen">
           <Navbar />

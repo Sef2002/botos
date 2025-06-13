@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useCart } from '../context/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 const stripePromise = loadStripe(
   import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string
@@ -8,32 +9,59 @@ const stripePromise = loadStripe(
 
 const Checkout: React.FC = () => {
   const { cartItems, cartTotal, clearCart } = useCart();
+  const navigate = useNavigate();
   const [customer, setCustomer] = useState({
     name: '',
     email: '',
     phone: '',
   });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCustomer(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (error) setError(null);
   };
 
-  const handleSubmit = async () => {
-    if (!customer.name || !customer.email || !customer.phone) {
-      alert('Per favore compila tutti i campi obbligatori.');
-      return;
+  const validateForm = () => {
+    if (!customer.name.trim()) {
+      setError('Il nome è obbligatorio');
+      return false;
     }
-
+    if (!customer.email.trim()) {
+      setError('L\'email è obbligatoria');
+      return false;
+    }
+    if (!customer.phone.trim()) {
+      setError('Il telefono è obbligatorio');
+      return false;
+    }
+    if (!/\S+@\S+\.\S+/.test(customer.email)) {
+      setError('Inserisci un\'email valida');
+      return false;
+    }
     if (cartItems.length === 0) {
-      alert('Il carrello è vuoto.');
+      setError('Il carrello è vuoto');
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
       return;
     }
 
     setLoading(true);
+    setError(null);
 
     try {
+      console.log('Starting checkout process...');
+      
       const stripe = await stripePromise;
       if (!stripe) {
         throw new Error('Stripe non è stato caricato correttamente');
@@ -46,6 +74,8 @@ const Checkout: React.FC = () => {
         quantity,
       }));
 
+      console.log('Sending request to Edge Function with items:', items);
+
       // Call the deployed Supabase Edge Function
       const response = await fetch('https://tjysjdbdwxhjwxuhthzh.supabase.co/functions/v1/create-checkout', {
         method: 'POST',
@@ -57,24 +87,29 @@ const Checkout: React.FC = () => {
           items,
           origin: window.location.origin,
           customer: {
-            name: customer.name,
-            email: customer.email,
-            phone: customer.phone,
+            name: customer.name.trim(),
+            email: customer.email.trim(),
+            phone: customer.phone.trim(),
           },
         }),
       });
 
+      console.log('Edge Function response status:', response.status);
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        console.error('Edge Function error:', errorData);
+        console.error('Edge Function error response:', errorData);
         throw new Error(`Errore del server: ${response.status} - ${errorData.error || 'Errore sconosciuto'}`);
       }
 
       const data = await response.json();
+      console.log('Edge Function response data:', data);
       
       if (!data.id) {
         throw new Error('Sessione di checkout non valida');
       }
+
+      console.log('Redirecting to Stripe Checkout with session ID:', data.id);
 
       // Redirect to Stripe Checkout
       const result = await stripe.redirectToCheckout({
@@ -82,6 +117,7 @@ const Checkout: React.FC = () => {
       });
 
       if (result.error) {
+        console.error('Stripe redirect error:', result.error);
         throw new Error(result.error.message);
       }
 
@@ -89,82 +125,167 @@ const Checkout: React.FC = () => {
       clearCart();
     } catch (error) {
       console.error('Checkout error:', error);
-      alert(`Errore durante il checkout: ${error instanceof Error ? error.message : 'Errore sconosciuto'}`);
+      setError(`Errore durante il checkout: ${error instanceof Error ? error.message : 'Errore sconosciuto'}`);
     } finally {
       setLoading(false);
     }
   };
 
-  return (
-    <div className="container mx-auto py-20 px-4 grid md:grid-cols-2 gap-12">
-      {/* Customer Info */}
-      <div className="space-y-6">
-        <h2 className="text-2xl font-bold">I tuoi dati</h2>
-        <input
-          type="text"
-          name="name"
-          placeholder="Nome e Cognome *"
-          value={customer.name}
-          onChange={handleChange}
-          className="w-full p-3 border border-gray-700 bg-black text-white rounded focus:border-gold focus:outline-none"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email *"
-          value={customer.email}
-          onChange={handleChange}
-          className="w-full p-3 border border-gray-700 bg-black text-white rounded focus:border-gold focus:outline-none"
-          required
-        />
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Telefono *"
-          value={customer.phone}
-          onChange={handleChange}
-          className="w-full p-3 border border-gray-700 bg-black text-white rounded focus:border-gold focus:outline-none"
-          required
-        />
-        <p className="text-sm text-gray-400">* Campi obbligatori</p>
-      </div>
+  // Redirect to shop if cart is empty
+  React.useEffect(() => {
+    if (cartItems.length === 0) {
+      const timer = setTimeout(() => {
+        navigate('/shop');
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [cartItems.length, navigate]);
 
-      {/* Order Summary */}
-      <div className="space-y-6">
-        <h2 className="text-2xl font-bold">Riepilogo Ordine</h2>
-        {cartItems.length === 0 ? (
-          <p className="text-gray-400">Il carrello è vuoto</p>
-        ) : (
-          <>
-            <ul className="divide-y divide-gray-700">
-              {cartItems.map(({ product, quantity }) => (
-                <li key={product.id} className="py-4 flex justify-between">
-                  <div>
-                    <p className="font-semibold">{product.name}</p>
-                    <p className="text-sm text-gray-400">Quantità: {quantity}</p>
-                    {product.category && (
-                      <p className="text-sm text-gray-500">{product.category}</p>
-                    )}
-                  </div>
-                  <p className="font-bold">€{(product.price * quantity).toFixed(2)}</p>
-                </li>
-              ))}
-            </ul>
-            <div className="text-right text-xl font-bold border-t border-gray-700 pt-4">
-              Totale: €{cartTotal.toFixed(2)}
+  if (cartItems.length === 0) {
+    return (
+      <div className="container mx-auto py-20 px-4 text-center">
+        <h1 className="text-3xl font-bold mb-4">Carrello Vuoto</h1>
+        <p className="text-gray-400 mb-8">Il tuo carrello è vuoto. Verrai reindirizzato allo shop...</p>
+        <button
+          onClick={() => navigate('/shop')}
+          className="btn btn-primary"
+        >
+          Vai allo Shop
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <main className="pt-24">
+      <div className="container mx-auto py-20 px-4">
+        <h1 className="text-4xl font-heading font-bold text-center mb-12">Checkout</h1>
+        
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Customer Info */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-heading font-bold mb-6">I tuoi dati</h2>
+            
+            {error && (
+              <div className="bg-red-900 border border-red-700 text-red-100 px-4 py-3 rounded">
+                {error}
+              </div>
+            )}
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                  Nome e Cognome *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Inserisci il tuo nome completo"
+                  value={customer.name}
+                  onChange={handleChange}
+                  className="w-full p-3 border border-gray-700 bg-zinc-900 text-white rounded focus:border-gold focus:outline-none transition-colors"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="la-tua-email@esempio.com"
+                  value={customer.email}
+                  onChange={handleChange}
+                  className="w-full p-3 border border-gray-700 bg-zinc-900 text-white rounded focus:border-gold focus:outline-none transition-colors"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-300 mb-2">
+                  Telefono *
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="+39 123 456 7890"
+                  value={customer.phone}
+                  onChange={handleChange}
+                  className="w-full p-3 border border-gray-700 bg-zinc-900 text-white rounded focus:border-gold focus:outline-none transition-colors"
+                  required
+                />
+              </div>
+              
+              <p className="text-sm text-gray-400">* Campi obbligatori</p>
+            </form>
+          </div>
+
+          {/* Order Summary */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-heading font-bold mb-6">Riepilogo Ordine</h2>
+            
+            <div className="bg-zinc-900 border border-gray-800 rounded-lg p-6">
+              <ul className="divide-y divide-gray-700 space-y-4">
+                {cartItems.map(({ product, quantity }) => (
+                  <li key={product.id} className="pt-4 first:pt-0">
+                    <div className="flex items-start gap-4">
+                      {product.image_url && (
+                        <img
+                          src={product.image_url}
+                          alt={product.name}
+                          className="w-16 h-16 object-cover rounded"
+                        />
+                      )}
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-white">{product.name}</h3>
+                        {product.category && (
+                          <p className="text-sm text-gray-400">{product.category}</p>
+                        )}
+                        <div className="flex items-center justify-between mt-2">
+                          <span className="text-sm text-gray-400">Quantità: {quantity}</span>
+                          <span className="font-bold text-gold">€{(product.price * quantity).toFixed(2)}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="border-t border-gray-700 mt-6 pt-6">
+                <div className="flex justify-between items-center text-xl font-bold">
+                  <span>Totale:</span>
+                  <span className="text-gold">€{cartTotal.toFixed(2)}</span>
+                </div>
+              </div>
             </div>
+            
             <button
               onClick={handleSubmit}
               disabled={loading || cartItems.length === 0}
-              className="w-full bg-gold text-black py-3 rounded font-bold hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
+              className="w-full bg-gold text-black py-4 rounded font-bold text-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
             >
-              {loading ? 'Elaborazione...' : 'Procedi al Pagamento'}
+              {loading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                  Elaborazione...
+                </span>
+              ) : (
+                'Procedi al Pagamento'
+              )}
             </button>
-          </>
-        )}
+            
+            <p className="text-xs text-gray-400 text-center">
+              Sarai reindirizzato a Stripe per completare il pagamento in modo sicuro.
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
+    </main>
   );
 };
 

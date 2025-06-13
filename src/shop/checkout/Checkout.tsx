@@ -76,9 +76,8 @@ const Checkout: React.FC = () => {
 
       console.log('Sending request to Edge Function with items:', items);
 
-      // Call the deployed Supabase Edge Function
-      const response = await fetch('https://tjysjdbdwxhjwxuhthzh.supabase.co/functions/v1/create-checkout', {
-        method: 'POST',
+           // Call the deployed Supabase Edge Function using the configured Supabase URL
+      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,

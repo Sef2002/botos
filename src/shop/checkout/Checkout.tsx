@@ -1,11 +1,24 @@
+import { createClient } from '@supabase/supabase-js';
+
+// Expose the Supabase project URL so other modules can build REST and Edge
+// Function endpoints based on it.
+export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+
+// Central Supabase client used across the app
+export const supabase = createClient(SUPABASE_URL, supabaseAnonKey);
+src/shop/checkout/Checkout.tsx
++12
+-10
+
 import React, { useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js'; 
+import { loadStripe } from '@stripe/stripe-js';
 import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
+import { SUPABASE_URL } from '../../lib/supabase';
 
-const stripePromise = loadStripe(
-  import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string
-);
+const STRIPE_PK = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string | undefined;
+const stripePromise = STRIPE_PK ? loadStripe(STRIPE_PK) : Promise.resolve(null);
 
 const Checkout: React.FC = () => {
   const { cartItems, cartTotal, clearCart } = useCart();
@@ -31,26 +44,7 @@ const Checkout: React.FC = () => {
       return false;
     }
     if (!customer.email.trim()) {
-      setError('L\'email è obbligatoria');
-      return false;
-    }
-    if (!customer.phone.trim()) {
-      setError('Il telefono è obbligatorio');
-      return false;
-    }
-    if (!/\S+@\S+\.\S+/.test(customer.email)) {
-      setError('Inserisci un\'email valida');
-      return false;
-    }
-    if (cartItems.length === 0) {
-      setError('Il carrello è vuoto');
-      return false;
-    }
-    return true;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+@@ -54,77 +54,79 @@ const Checkout: React.FC = () => {
     
     if (!validateForm()) {
       return;
@@ -76,11 +70,14 @@ const Checkout: React.FC = () => {
 
       console.log('Sending request to Edge Function with items:', items);
 
-           // Call the deployed Supabase Edge Function using the configured Supabase URL
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-checkout`, {
+      // Call the deployed Supabase Edge Function manually. Using fetch avoids
+      // issues with incorrect HTTP methods when invoking the function in some
+      // environments.
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify({
           items,
@@ -93,17 +90,15 @@ const Checkout: React.FC = () => {
         }),
       });
 
-      console.log('Edge Function response status:', response.status);
-
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         console.error('Edge Function error response:', errorData);
-        throw new Error(`Errore del server: ${response.status} - ${errorData.error || 'Errore sconosciuto'}`);
+        throw new Error(
+          `Errore del server: ${response.status} - ${errorData.error || 'Errore sconosciuto'}`,
+        );
       }
 
-      const data = await response.json();
-      console.log('Edge Function response data:', data);
-      
+      const data = (await response.json()) as { id?: string };
       if (!data.id) {
         throw new Error('Sessione di checkout non valida');
       }

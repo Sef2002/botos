@@ -1,7 +1,3 @@
-
-+4
--0
-
 # Botos Shop Demo
 
 This project is a React application using Vite, Supabase and Stripe. It includes a simple shopping cart with checkout flow.
@@ -21,5 +17,4 @@ npm run dev
 ## Supabase Functions
 
 A Supabase Edge Function named `create-checkout` is used to create Stripe Checkout sessions. Ensure you deploy it before testing the checkout flow.
-The frontend reads the Supabase URL from `VITE_SUPABASE_URL` to call this
-function.
+The frontend sends a `POST` request to `${VITE_SUPABASE_URL}/functions/v1/create-checkout` including the anonymous key in the `Authorization` header.

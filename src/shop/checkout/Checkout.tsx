@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCart } from "@/contexts/CartContext";
+import { useCart } from "../context/CartContext";
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);

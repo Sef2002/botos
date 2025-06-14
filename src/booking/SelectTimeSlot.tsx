@@ -93,7 +93,7 @@ const SelectTimeSlot = () => {
       appointment_time: `${selectedTime}:00`,
       duration_min: duration,
       customer_name: name,
-      phone,
+      customer_phone,
       barber_id: barberId,
       service_id: storedServiceId,
     });

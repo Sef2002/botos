@@ -6,13 +6,11 @@ const CookieBanner = () => {
 
   useEffect(() => {
     const consent = Cookies.get("cookie_consent");
-    if (!consent) {
-      setShowBanner(true);
-    }
+    if (!consent) setShowBanner(true);
   }, []);
 
   const handleConsent = (choice: "accepted" | "declined") => {
-    Cookies.set("cookie_consent", choice, { expires: 365 });
+    Cookies.set("cookie_consent", choice, { expires: 365, path: "/" });
     setShowBanner(false);
   };
 

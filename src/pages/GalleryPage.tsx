@@ -49,7 +49,7 @@ const GalleryPage: React.FC = () => {
             <h5 className="text-gold tracking-widest uppercase mb-2">Il Nostro Lavoro</h5>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6">GALLERIA</h1>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Sfoglia la nostra galleria per vedere esempi del nostro lavoro e dell'ambiente elegante che ti aspetta presso il nostro salone.
+              Sfoglia la nostra galleria per vedere esempi del nostro lavoro e dell'ambiente elegante che ti aspetta presso Prestige Salon.
             </p>
           </div>
         </div>
@@ -128,7 +128,7 @@ const GalleryPage: React.FC = () => {
                   href="#" 
                   className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                 >
-                  <span className="text-white text-xl">@uniquestyle</span>
+                  <span className="text-white text-xl">@prestigesalon</span>
                 </a>
               </div>
             ))}

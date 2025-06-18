@@ -53,7 +53,7 @@ const SelectTimeSlot = () => {
           'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
         },
         body: JSON.stringify({
-          business_id: '[TUO_BUSINESS_ID]',
+          business_id: '268e0ae9-c539-471c-b4c2-1663cf598436',
           barber_id: selectedBarber.id,
           service_id: storedServiceId,
           date: dateStr,

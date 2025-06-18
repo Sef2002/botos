@@ -21,14 +21,17 @@ const SelectTimeSlot = () => {
 
   useEffect(() => {
     if (!storedServiceId) return;
+
     const fetchDuration = async () => {
       const { data, error } = await supabase
         .from('services')
         .select('duration_min')
         .eq('id', storedServiceId)
         .single();
+
       if (!error && data?.duration_min) setDuration(data.duration_min);
     };
+
     fetchDuration();
   }, [storedServiceId]);
 
@@ -47,21 +50,35 @@ const SelectTimeSlot = () => {
         date: format(date, 'yyyy-MM-dd'),
       };
 
+      // Log variabili
+      const envKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+      const fallbackKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqeXNqZGJkd3hoand4dWh0aHpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczMDg2NTgsImV4cCI6MjA2Mjg4NDY1OH0.Z7hqDei0FJp-IUyNDX-rroJXlHYg3BrzUuzQXBJ6yxo';
+      const finalKey = envKey || fallbackKey;
+
+      console.log('🔑 ENV KEY FOUND?', !!envKey);
+      console.log('📦 Payload:', body);
+
       try {
-        const response = await fetch('https://tjysjdbdwxhjwxuhthzh.functions.supabase.co/dynamic-slots', {
+        const response = await fetch('https://tjysjdbdwxhjwxuhthzh.functions.supabase.co/functions/v1/dynamic-slots', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqeXNqZGJkd3hoand4dWh0aHpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczMDg2NTgsImV4cCI6MjA2Mjg4NDY1OH0.Z7hqDei0FJpIUyNDX-rroJXlHYg3BrzUuzQXBJ6yxo`,
+            Authorization: `Bearer ${finalKey}`,
           },
           body: JSON.stringify(body),
         });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('❌ Fetch failed with status:', response.status, errorText);
+          return;
+        }
 
         const result = await response.json();
         setPerfectSlots(result.perfect || []);
         setOtherSlots(result.other || []);
       } catch (error) {
-        console.error('Error fetching slots:', error);
+        console.error('❌ Error fetching slots:', error);
       }
     };
 
@@ -96,8 +113,7 @@ const SelectTimeSlot = () => {
 
   return (
     <main className="pt-24 bg-white min-h-screen">
-      {/* ...resto della UI invariato... */}
-      {/* tutto quello che segue da DatePicker in giù rimane identico alla tua versione attuale */}
+      {/* UI invariata */}
     </main>
   );
 };

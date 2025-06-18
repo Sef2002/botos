@@ -46,7 +46,7 @@ const SelectTimeSlot = () => {
     const fetchSlots = async () => {
       const dateStr = format(date, 'yyyy-MM-dd');
 
-      const res = await fetch('https://[TUO_PROJECT_ID].functions.supabase.co/dynamic-slots', {
+      const res = await fetch('https://tjysjdbdwxhjwxuhthzh.functions.supabase.co/dynamic-slots', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -36,6 +36,10 @@ body {
   .btn-outline {
     @apply border border-gold text-gold hover:bg-gold hover:text-black;
   }
+
+  .btn-outline-black {
+    @apply border border-black text-black hover:bg-black hover:text-white;
+  }
   
   .section-title {
     @apply text-4xl sm:text-5xl font-heading font-semibold mb-6 relative inline-block;
@@ -64,6 +68,23 @@ body {
   }
   
   .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .nav-link-white {
+    @apply relative py-2 text-black transition-all duration-300;
+  }
+  
+  .nav-link-white::after {
+    content: "";
+    @apply absolute left-0 bottom-0 w-0 h-[1px] bg-gold transition-all duration-300;
+  }
+  
+  .nav-link-white:hover::after {
+    @apply w-full;
+  }
+  
+  .nav-link-white.active::after {
     @apply w-full;
   }
 }

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import CookieBanner from './components/CookieBanner'; // ✅ AGGIUNTO
+import CookieBanner from './components/CookieBanner';
 
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
@@ -15,8 +15,15 @@ import SelectTimeSlot from './booking/SelectTimeSlot';
 import BookingSuccess from './booking/BookingSuccess';
 
 import { CartProvider } from './shop/context/CartContext';
+import { loadConsentBasedScripts } from './utils/cookieConsent';
 
 function App() {
+  useEffect(() => {
+    // Carica gli script di tracking basati sul consenso esistente
+    // Questo si attiva solo se l'utente ha già dato il consenso in precedenza
+    loadConsentBasedScripts();
+  }, []);
+
   return (
     <CartProvider>
       <Router>
@@ -34,7 +41,7 @@ function App() {
           </Routes>
           <Footer />
 
-          {/* ✅ Banner Cookie GDPR */}
+          {/* 🍪 Banner Cookie GDPR Compliant */}
           <CookieBanner />
         </div>
       </Router>

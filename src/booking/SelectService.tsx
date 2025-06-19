@@ -15,14 +15,11 @@ const SelectService = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchServices = async () => {
       const { data, error } = await supabase.from('services').select('*');
-      console.log('services data:', data);
-      console.log('services error:', error);
-
-      if (!error && data) {
-        setServices(data);
+      if (!error) {
+        setServices(data as Service[] ?? []);
       }
       setLoading(false);
     };
@@ -31,10 +28,12 @@ const SelectService = () => {
   }, []);
 
   const handleSelect = (service: Service) => {
+    // Store only the ID, not the full object
     localStorage.setItem('selectedServiceId', service.id.toString());
     navigate('/prenota/barbiere');
   };
 
+  // Group services by category based on their names
   const groupServicesByCategory = (services: Service[]) => {
     const categories: { [key: string]: Service[] } = {
       'Taglio & Styling': [],
@@ -45,7 +44,7 @@ const SelectService = () => {
 
     services.forEach(service => {
       const name = service.name?.toLowerCase() || '';
-
+      
       if (name.includes('taglio') || name.includes('piega') || name.includes('styling')) {
         categories['Taglio & Styling'].push(service);
       } else if (name.includes('colore') || name.includes('colorazione') || name.includes('trattamento') || name.includes('maschera')) {
@@ -57,8 +56,11 @@ const SelectService = () => {
       }
     });
 
+    // Remove empty categories
     Object.keys(categories).forEach(key => {
-      if (categories[key].length === 0) delete categories[key];
+      if (categories[key].length === 0) {
+        delete categories[key];
+      }
     });
 
     return categories;
@@ -68,16 +70,20 @@ const SelectService = () => {
 
   return (
     <main className="pt-24 bg-white min-h-screen">
+      {/* Hero Section */}
       <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 md:px-8 text-center mb-12">
-          <h5 className="text-gray-600 tracking-widest uppercase mb-2 font-primary">Prenota il tuo servizio</h5>
-          <h1 className="text-4xl sm:text-5xl font-heading font-bold mb-6 text-black">SCEGLI IL SERVIZIO</h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto font-primary">
-            Seleziona il servizio che desideri prenotare. I nostri esperti ti offriranno un'esperienza personalizzata e di alta qualità.
-          </p>
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="text-center mb-12">
+            <h5 className="text-gray-600 tracking-widest uppercase mb-2 font-primary">Prenota il tuo servizio</h5>
+            <h1 className="text-4xl sm:text-5xl font-heading font-bold mb-6 text-black">SCEGLI IL SERVIZIO</h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto font-primary">
+              Seleziona il servizio che desideri prenotare. I nostri esperti ti offriranno un'esperienza personalizzata e di alta qualità.
+            </p>
+          </div>
         </div>
       </section>
 
+      {/* Services Selection */}
       <section className="pb-20 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           {loading ? (
@@ -89,10 +95,13 @@ const SelectService = () => {
             <div className="max-w-4xl mx-auto space-y-12">
               {Object.entries(categorizedServices).map(([category, categoryServices]) => (
                 <div key={category} className="space-y-6">
+                  {/* Category Header */}
                   <div className="text-center">
                     <h2 className="text-2xl font-heading font-bold text-black mb-2">{category}</h2>
                     <div className="w-20 h-[2px] bg-gold mx-auto"></div>
                   </div>
+
+                  {/* Services Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {categoryServices.map((service) => (
                       <button
@@ -104,11 +113,13 @@ const SelectService = () => {
                           <h3 className="text-xl font-heading font-bold text-black group-hover:text-gold transition-colors">
                             {service.name}
                           </h3>
+                          
                           {service.description && (
                             <p className="text-gray-600 font-primary leading-relaxed">
                               {service.description}
                             </p>
                           )}
+                          
                           <div className="flex items-center justify-between pt-2 border-t border-gray-200">
                             <div className="flex items-center space-x-4 text-sm font-primary">
                               {service.price !== undefined && (
@@ -125,6 +136,7 @@ const SelectService = () => {
                                 </span>
                               )}
                             </div>
+                            
                             <div className="text-gold group-hover:translate-x-1 transition-transform">
                               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -142,6 +154,7 @@ const SelectService = () => {
         </div>
       </section>
 
+      {/* Help Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-8 text-center">
           <div className="max-w-2xl mx-auto">

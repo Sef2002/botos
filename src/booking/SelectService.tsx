@@ -15,7 +15,7 @@ const SelectService = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => { 
+  useEffect(() => {
     const fetchServices = async () => {
       const { data, error } = await supabase.from('services').select('*');
       if (!error) {
@@ -174,7 +174,7 @@ const SelectService = () => {
           </div>
         </div>
       </section>
-    </main>
+    </main> 
   );
 };
 

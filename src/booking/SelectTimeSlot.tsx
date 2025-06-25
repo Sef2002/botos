@@ -8,7 +8,7 @@ import { getAvailableTimeSlots } from '../lib/availability';
 
 const SelectTimeSlot = () => {
   const navigate = useNavigate();
-  const selectedBarber = JSON.parse(localStorage.getItem('selectedBarber') || '"any"');
+  const barberId = localStorage.getItem('selectedBarberId');
   const storedServiceId = localStorage.getItem('selectedServiceId');
 
   const [date, setDate] = useState(new Date());

@@ -17,7 +17,7 @@ const SelectBarber = () => {
   }, []);
 
   const handleSelect = (barber: any | 'any') => {
-    localStorage.setItem('selectedBarber', JSON.stringify(barber));
+    localStorage.setItem('selectedBarberId', barber.id);
     navigate('/prenota/orario');
   };
 

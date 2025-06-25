@@ -6,9 +6,9 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { getAvailableTimeSlots } from '../lib/availability';
 
-const SelectTimeSlot = () => {
+const SelectTimeSlot = () => { 
   const navigate = useNavigate();
-  const barberId = localStorage.getItem('selectedBarberId');
+  const selectedBarber = JSON.parse(localStorage.getItem('selectedBarber') || '"any"');
   const storedServiceId = localStorage.getItem('selectedServiceId');
 
   const [date, setDate] = useState(new Date());

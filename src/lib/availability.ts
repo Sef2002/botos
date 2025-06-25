@@ -49,7 +49,7 @@ export async function getAvailableTimeSlots(barberId: string, date: string, dura
       const end = toMinutes(end_time);
 
       const localBusy = busyBlocks
-        .filter(b => b.start >= current && b.end <= end)
+        .filter(b => b.end > current && b.start < end)
         .sort((a, b) => a.start - b.start);
 
       // Add dummy blocks for easier edge handling

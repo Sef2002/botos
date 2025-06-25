@@ -52,7 +52,7 @@ const SelectTimeSlot = () => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqeXNqZGJkd3hoand4dWh0aHpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczMDg2NTgsImV4cCI6MjA2Mjg4NDY1OH0.Z7hqDei0FJpIUyNDX-rroJXlHYg3BrzUuzQXBJ6yxo,
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqeXNqZGJkd3hoand4dWh0aHpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczMDg2NTgsImV4cCI6MjA2Mjg4NDY1OH0.Z7hqDei0FJpIUyNDX-rroJXlHYg3BrzUuzQXBJ6yxo',
           },
           body: JSON.stringify(body),
         });
@@ -75,7 +75,7 @@ const SelectTimeSlot = () => {
 
     const { error } = await supabase.from('appointments').insert({
       appointment_date: format(date, 'yyyy-MM-dd'),
-      appointment_time: ${selectedTime}:00,
+      appointment_time: `${selectedTime}:00`,
       duration_min: duration,
       customer_name: name,
       customer_phone: phone,
@@ -96,8 +96,84 @@ const SelectTimeSlot = () => {
 
   return (
     <main className="pt-24 bg-white min-h-screen">
-      {/* ...resto della UI invariato... */}
-      {/* tutto quello che segue da DatePicker in giù rimane identico alla tua versione attuale */}
+      <div className="max-w-2xl mx-auto py-10 px-4">
+        <h1 className="text-2xl font-bold mb-4 text-center">Scegli l'orario</h1>
+
+        <div className="mb-6 flex justify-center">
+          <DatePicker
+            selected={date}
+            onChange={(date) => setDate(date!)}
+            dateFormat="dd/MM/yyyy"
+            className="border rounded p-2 text-black"
+          />
+        </div>
+
+        {perfectSlots.length > 0 && (
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-2">Orari perfetti</h3>
+            <div className="grid grid-cols-3 gap-2">
+              {perfectSlots.map((slot) => (
+                <button
+                  key={slot.value}
+                  className={`border rounded p-2 text-sm ${
+                    selectedTime === slot.value ? 'bg-[#5D4037] text-white' : 'hover:bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedTime(slot.value)}
+                >
+                  {slot.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {otherSlots.length > 0 && (
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold mb-2">Altri orari disponibili</h3>
+            <div className="grid grid-cols-3 gap-2">
+              {otherSlots.map((slot) => (
+                <button
+                  key={slot.value}
+                  className={`border rounded p-2 text-sm ${
+                    selectedTime === slot.value ? 'bg-[#5D4037] text-white' : 'hover:bg-gray-100'
+                  }`}
+                  onClick={() => setSelectedTime(slot.value)}
+                >
+                  {slot.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {perfectSlots.length === 0 && otherSlots.length === 0 && (
+          <p className="text-center text-gray-500 mb-6">Nessun orario disponibile</p>
+        )}
+
+        <div className="space-y-4 mb-6">
+          <input
+            type="text"
+            placeholder="Nome"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full border rounded p-2 text-black"
+          />
+          <input
+            type="tel"
+            placeholder="Telefono"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            className="w-full border rounded p-2 text-black"
+          />
+        </div>
+
+        <button
+          onClick={handleSubmit}
+          className="bg-[#5D4037] text-white px-6 py-2 rounded shadow w-full"
+        >
+          Conferma Prenotazione
+        </button>
+      </div>
     </main>
   );
 };

@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
         scrolled ? 'py-3' : 'py-6'
       }`}>
         <div className="container mx-auto px-4 md:px-8">
-          <nav className="flex justify-between items-center bg-white rounded-[40px] px-8 py-4 shadow-lg border border-gray-200">
+          <nav className="flex justify-between items-center bg-black rounded-[40px] px-8 py-4 shadow-lg border border-gray-800">
             <NavLink to="/" className="flex items-center">
               <img 
                 src="/assets/logo.png" 
@@ -35,10 +35,10 @@ const Navbar: React.FC = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-10">
-              <NavLink to="/" className={({ isActive }) => `nav-link-black ${isActive ? 'active' : ''} text-sm tracking-wider`}>HOME</NavLink>
-              <NavLink to="/servizi" className={({ isActive }) => `nav-link-black ${isActive ? 'active' : ''} text-sm tracking-wider`}>SERVIZI</NavLink>
-              <NavLink to="/galleria" className={({ isActive }) => `nav-link-black ${isActive ? 'active' : ''} text-sm tracking-wider`}>GALLERIA</NavLink>
-              <NavLink to="/contatti" className={({ isActive }) => `nav-link-black ${isActive ? 'active' : ''} text-sm tracking-wider`}>CONTATTI</NavLink>
+              <NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`}>HOME</NavLink>
+              <NavLink to="/servizi" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`}>SERVIZI</NavLink>
+              <NavLink to="/galleria" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`}>GALLERIA</NavLink>
+              <NavLink to="/contatti" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''} text-sm tracking-wider`}>CONTATTI</NavLink>
             </div>
 
             {/* CTA Buttons + Cart */}
@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
 
               {/* Cart Icon */}
               <button
-                className="relative text-black hover:text-gold transition-colors"
+                className="relative text-white hover:text-gold transition-colors"
                 onClick={() => setCartOpen(true)}
               >
                 <ShoppingCart size={24} />
@@ -61,14 +61,14 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* Mobile Menu Toggle */}
-            <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-black">
+            <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white">
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </nav>
         </div>
 
         {/* Mobile Menu */}
-        <div className={`fixed inset-0 bg-white bg-opacity-95 z-40 md:hidden transition-transform duration-300 ease-in-out ${
+        <div className={`fixed inset-0 bg-black bg-opacity-95 z-40 md:hidden transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } pt-20`}>
           <div className="container mx-auto px-4 flex flex-col space-y-8">
@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
               <NavLink
                 key={i}
                 to={path}
-                className="text-xl font-heading text-black hover:text-gold transition-colors py-2"
+                className="text-xl font-heading text-white hover:text-gold transition-colors py-2"
                 onClick={() => setIsOpen(false)}
               >
                 {path.replace('/', '').toUpperCase() || 'HOME'}

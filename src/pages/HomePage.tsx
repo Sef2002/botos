@@ -34,20 +34,20 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-4xl">
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-heading font-bold mb-4 fade-in" style={{ '--delay': '100ms' } as React.CSSProperties}>
-              SEVENTYFOUR<br />
-              <span className="text-gold">PARRUCCHIERI</span>
+              MANU<br />
+              <span className="text-gold">DI FORBICI</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 mb-6 max-w-2xl fade-in" style={{ '--delay': '200ms' } as React.CSSProperties}>
-              Innovazione e creatività nel cuore di Milano. Pietro e il suo team ti offrono un'esperienza unica con i migliori prodotti e le tecniche più avanzate.
+              Innovazione e creatività nel cuore di Treviglio. Manu e il suo team ti offrono un'esperienza unica con i migliori prodotti e le tecniche più avanzate.
             </p>
             <div className="flex items-center gap-6 mb-8 fade-in" style={{ '--delay': '250ms' } as React.CSSProperties}>
               <div className="flex items-center gap-2 text-gold">
                 <MapPin size={18} />
-                <span className="text-sm">Via Giuseppe Bardelli, 12 - Milano</span>
+                <span className="text-sm">Via Giacomo Sangalli, 26 - Treviglio</span>
               </div>
               <div className="flex items-center gap-2 text-gold">
                 <Clock size={18} />
-                <span className="text-sm">1 min dalla stazione Lambrate</span>
+                <span className="text-sm">6 min dalla stazione di Treviglio</span>
               </div>
             </div>
             <div className="w-20 h-[1px] bg-gold mb-8"></div>
@@ -76,10 +76,10 @@ const HomePage: React.FC = () => {
               
               <div className="space-y-6 text-gray-600 font-primary leading-relaxed">
                 <p>
-                  Seventyfour Parrucchieri sorge in Via Giuseppe Bardelli 12 a Milano, nel vibrante e sempre attivo quartiere residenziale tra Città Studi e Lambrate, a soli un minuto a piedi dalla stazione ferroviaria.
+                  Manu di Forbici sorge in Via Giacomo Sangalli 26 a Treviglio, nel cuore della città, a soli sei minuti a piedi dalla stazione ferroviaria.
                 </p>
                 <p>
-                  Pietro, il titolare, insieme al suo intero staff si prende cura con amore e dedizione della sua clientela proponendo servizi innovativi e creativi, colori alla moda e tagli che seguono sempre gli ultimi trend.
+                  Manu, il titolare, insieme al suo intero staff si prende cura con amore e dedizione della sua clientela proponendo servizi innovativi e creativi, colori alla moda e tagli che seguono sempre gli ultimi trend.
                 </p>
                 <p>
                   Il nostro ambiente luminoso, dagli arredi curati nei minimi dettagli, crea un'atmosfera unica ed elegante dove ogni cliente può rilassarsi e godersi un'esperienza di bellezza completa.
@@ -103,7 +103,7 @@ const HomePage: React.FC = () => {
               <div className="space-y-4">
                 <img 
                   src="/assets/story1.png" 
-                  alt="Seventyfour Parrucchieri - Ambiente elegante" 
+                  alt="Manu di Forbici - Ambiente elegante" 
                   className="w-full h-48 sm:h-64 object-cover rounded-lg shadow-md"
                 />
                 <img 
@@ -115,7 +115,7 @@ const HomePage: React.FC = () => {
               <div className="space-y-4 mt-8">
                 <img 
                   src="/assets/story3.png" 
-                  alt="Pietro al lavoro" 
+                  alt="Manu al lavoro" 
                   className="w-full h-60 sm:h-80 object-cover rounded-lg shadow-md"
                 />
                 <img 
@@ -215,7 +215,7 @@ const HomePage: React.FC = () => {
             <div className="col-span-2 row-span-2">
               <img 
                 src="/assets/photo1.png" 
-                alt="Seventyfour Parrucchieri - Lavoro professionale" 
+                alt="Manu di Forbici - Lavoro professionale" 
                 className="w-full h-full object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
               />
             </div>
@@ -269,11 +269,11 @@ const HomePage: React.FC = () => {
           <div className="max-w-2xl mx-auto fade-in">
             <h2 className="text-4xl sm:text-5xl font-heading font-bold mb-6">Prenota Il Tuo Appuntamento</h2>
             <p className="text-lg text-gray-300 mb-8">
-              Affidati all'esperienza di Pietro e del suo team. Prenota ora per un'esperienza di bellezza unica nel cuore di Milano.
+              Affidati all'esperienza di Manu e del suo team. Prenota ora per un'esperienza di bellezza unica nel cuore di Treviglio.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/prenota/servizio" className="btn btn-primary text-lg px-8 py-3">PRENOTA ORA</Link>
-              <a href="tel:0297383541" className="btn btn-outline text-lg px-8 py-3">CHIAMA ORA</a>
+              <a href="tel:3333852292" className="btn btn-outline text-lg px-8 py-3">CHIAMA ORA</a>
             </div>
           </div>
         </div>

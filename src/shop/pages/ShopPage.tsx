@@ -232,7 +232,7 @@ const ShopPage = () => {
               Contattaci per una consulenza personalizzata.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:0297383541" className="bg-gold text-black px-8 py-3 rounded-lg font-heading font-bold text-lg transition-all duration-300 hover:bg-opacity-90 shadow-lg hover:shadow-xl">
+              <a href="tel:3333852292" className="bg-gold text-black px-8 py-3 rounded-lg font-heading font-bold text-lg transition-all duration-300 hover:bg-opacity-90 shadow-lg hover:shadow-xl">
                 CHIAMA ORA
               </a>
               <a href="/prenota/servizio" className="bg-white text-black border-2 border-black px-8 py-3 rounded-lg font-heading font-bold text-lg transition-all duration-300 hover:bg-gray-50 hover:border-gold">

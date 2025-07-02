@@ -26,11 +26,9 @@ const Navbar: React.FC = () => {
         <div className="container mx-auto px-4 md:px-8">
           <nav className="flex justify-between items-center bg-black rounded-[40px] px-8 py-4 shadow-lg border border-gray-800">
             <NavLink to="/" className="flex items-center">
-              <img 
-                src="/assets/logo.png" 
-                alt="Madame Acconciature" 
-                className="h-8 w-auto object-contain"
-              />
+              <span className="text-2xl font-heading font-bold text-white tracking-wider">
+                MADAME
+              </span>
             </NavLink>
 
             {/* Desktop Menu */}

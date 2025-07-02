@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
             <NavLink to="/" className="flex items-center">
               <img 
                 src="/assets/logo.png" 
-                alt="Manu di Forbici" 
+                alt="Madame Acconciature" 
                 className="h-8 w-auto object-contain"
               />
             </NavLink>

@@ -137,7 +137,7 @@ const BookingSuccess = () => {
                   <div className="flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200">
                     <User className="text-gold mt-1 flex-shrink-0" size={24} />
                     <div>
-                      <h3 className="font-heading font-semibold text-black mb-1">Barbiere</h3>
+                      <h3 className="font-heading font-semibold text-black mb-1">Parrucchiere</h3>
                       <p className="text-gray-600 font-primary">
                         {appointmentInfo.barber === 'any' || !appointmentInfo.barber?.name
                           ? 'Primo staff disponibile'
@@ -201,8 +201,8 @@ const BookingSuccess = () => {
                   <Phone className="text-gold flex-shrink-0" size={18} />
                   <div>
                     <p className="text-gray-600 font-primary">
-                      <a href="tel:3333852292" className="hover:text-gold transition-colors">
-                        333 385 2292
+                      <a href="tel:3514460171" className="hover:text-gold transition-colors">
+                        351 446 0171
                       </a>
                     </p>
                   </div>
@@ -211,8 +211,8 @@ const BookingSuccess = () => {
                   <Mail className="text-gold flex-shrink-0" size={18} />
                   <div>
                     <p className="text-gray-600 font-primary">
-                      <a href="mailto:manudiforbici89@gmail.com" className="hover:text-gold transition-colors">
-                        manudiforbici89@gmail.com
+                      <a href="mailto:info@madameacconciature.it" className="hover:text-gold transition-colors">
+                        info@madameacconciature.it
                       </a>
                     </p>
                   </div>
@@ -221,7 +221,7 @@ const BookingSuccess = () => {
                   <MapPin className="text-gold mt-1 flex-shrink-0" size={18} />
                   <div>
                     <p className="text-gray-600 font-primary">
-                      Via Giacomo Sangalli, 26<br />
+                      Viale XXIV Maggio, 23D<br />
                       24047 Treviglio BG
                     </p>
                   </div>
@@ -276,7 +276,7 @@ const BookingSuccess = () => {
                 TORNA ALLA HOME
               </button>
               <a
-                href="tel:3333852292"
+                href="tel:3514460171"
                 className="bg-white text-black border-2 border-black px-8 py-3 rounded-lg font-heading font-bold text-lg transition-all duration-300 hover:bg-gray-50 hover:border-gold"
               >
                 CHIAMA IL SALONE

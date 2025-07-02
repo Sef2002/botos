@@ -68,7 +68,7 @@ const BarberCard = ({
           )}
           {barber === 'any' && (
             <p className="text-gray-600 font-primary">
-              Il primo barbiere disponibile per il tuo orario
+              Il primo parrucchiere disponibile per il tuo orario
             </p>
           )}
         </div>
@@ -143,7 +143,7 @@ const SelectBarber = () => {
     return (
       <main className="pt-24 min-h-screen flex flex-col items-center justify-center">
         <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-black"></div>
-        <p className="mt-4 text-gray-600 font-primary">Caricamento barbieri…</p>
+        <p className="mt-4 text-gray-600 font-primary">Caricamento parrucchieri…</p>
       </main>
     );
   }
@@ -158,10 +158,10 @@ const SelectBarber = () => {
             Prenota il tuo servizio
           </h5>
           <h1 className="text-4xl sm:text-5xl font-heading font-bold mb-6 text-black">
-            SCEGLI IL BARBIERE
+            SCEGLI IL PARRUCCHIERE
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto font-primary">
-            Seleziona il barbiere che preferisci o lascia che sia il primo disponibile 
+            Seleziona il parrucchiere che preferisci o lascia che sia il primo disponibile 
             a prendersi cura di te con la massima professionalità.
           </p>
         </div>

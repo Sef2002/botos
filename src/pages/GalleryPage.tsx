@@ -49,7 +49,7 @@ const GalleryPage: React.FC = () => {
             <h5 className="text-gold tracking-widest uppercase mb-2">Il Nostro Lavoro</h5>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-6">GALLERIA</h1>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Scopri i nostri lavori e l'ambiente elegante di Manu di Forbici. 
+              Scopri i nostri lavori e l'ambiente elegante di Madame Acconciature. 
               Ogni creazione racconta la nostra passione per l'innovazione e la bellezza.
             </p>
           </div>
@@ -131,7 +131,7 @@ const GalleryPage: React.FC = () => {
                   href="#" 
                   className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
                 >
-                  <span className="text-white text-sm font-semibold">@manudiforbici</span>
+                  <span className="text-white text-sm font-semibold">@madameacconciature</span>
                 </a>
               </div>
             ))}
@@ -149,12 +149,12 @@ const GalleryPage: React.FC = () => {
           <div className="max-w-2xl mx-auto fade-in">
             <h2 className="text-4xl font-heading font-bold mb-6">Vuoi Essere Il Prossimo?</h2>
             <p className="text-lg text-gray-300 mb-8">
-              Ti è piaciuto quello che hai visto? Prenota il tuo appuntamento con Manu e il suo team 
+              Ti è piaciuto quello che hai visto? Prenota il tuo appuntamento con Madame e il suo team 
               per un'esperienza di bellezza unica nel cuore di Treviglio.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/prenota/servizio" className="btn btn-primary text-lg px-8 py-3">PRENOTA ORA</a>
-              <a href="tel:3333852292" className="btn btn-outline text-lg px-8 py-3">CHIAMA ORA</a>
+              <a href="tel:3514460171" className="btn btn-outline text-lg px-8 py-3">CHIAMA ORA</a>
             </div>
           </div>
         </div>

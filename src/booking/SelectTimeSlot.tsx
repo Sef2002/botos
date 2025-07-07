@@ -39,11 +39,13 @@ const TimeSlotButton = ({
   isSelected,
   onClick,
   isPerfect = false,
+  isOverlapping = false, // Added for overlapping slots
 }: {
   slot: { label: string; value: string };
   isSelected: boolean;
   onClick: () => void;
   isPerfect?: boolean;
+  isOverlapping?: boolean; // Added for overlapping slots
 }) => (
   <button
     onClick={onClick}
@@ -52,6 +54,8 @@ const TimeSlotButton = ({
         ? 'bg-gold text-black border-gold shadow-lg'
         : isPerfect
         ? 'bg-green-50 border-green-300 text-green-800 hover:bg-green-100 hover:border-green-400'
+        : isOverlapping
+        ? 'bg-blue-50 border-blue-300 text-blue-800 hover:bg-blue-100 hover:border-blue-400' // Style for overlapping
         : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400'
     }`}
   >
@@ -59,6 +63,9 @@ const TimeSlotButton = ({
       <span className="font-semibold">{slot.label}</span>
       {isPerfect && (
         <span className="text-xs text-green-600 mt-1">Perfetto</span>
+      )}
+      {isOverlapping && (
+        <span className="text-xs text-blue-600 mt-1">Sovrapposto</span> // Label for overlapping
       )}
     </div>
   </button>
@@ -107,6 +114,7 @@ const SelectTimeSlot = () => {
   const [date, setDate] = useState(new Date());
   const [perfectSlots, setPerfectSlots] = useState<{ label: string; value: string }[]>([]);
   const [otherSlots, setOtherSlots] = useState<{ label: string; value: string }[]>([]);
+  const [overlappingSlots, setOverlappingSlots] = useState<{ label: string; value: string }[]>([]); // New state for overlapping slots
   const [selectedTime, setSelectedTime] = useState('');
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -150,13 +158,15 @@ const SelectTimeSlot = () => {
     if (!service || !selectedBarber || selectedBarber === 'any') {
       setPerfectSlots([]);
       setOtherSlots([]);
+      setOverlappingSlots([]); // Reset overlapping slots
       return;
     }
 
     const dateStr = format(date, 'yyyy-MM-dd');
     getAvailableTimeSlots(selectedBarber.id, dateStr, service.duration_min).then((result) => {
-      setPerfectSlots(result.perfect);
-      setOtherSlots(result.other);
+      setPerfectSlots(result.perfect || []);
+      setOtherSlots(result.other || []);
+      setOverlappingSlots(result.overlapping || []); // Set overlapping slots
     });
   }, [date, service, selectedBarber]);
 
@@ -427,7 +437,26 @@ const SelectTimeSlot = () => {
               </div>
             )}
 
-            {perfectSlots.length === 0 && otherSlots.length === 0 && (
+            {overlappingSlots.length > 0 && (
+              <div>
+                <h4 className="text-lg font-heading font-semibold text-black mb-4 text-center">
+                  Orari Sovrapposti (Richiedono Conferma)
+                </h4>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  {overlappingSlots.map((slot) => (
+                    <TimeSlotButton
+                      key={slot.value}
+                      slot={slot}
+                      isSelected={selectedTime === slot.value}
+                      onClick={() => setSelectedTime(slot.value)}
+                      isOverlapping={true}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {perfectSlots.length === 0 && otherSlots.length === 0 && overlappingSlots.length === 0 && (
               <div className="text-center py-8">
                 <p className="text-gray-500 font-primary">
                   Nessun orario disponibile per la data selezionata.

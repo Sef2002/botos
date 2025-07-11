@@ -1,0 +1,195 @@
+/* Custom DatePicker Styles to match the page design */
+.custom-datepicker {
+  font-family: 'Montserrat', sans-serif;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.custom-datepicker .react-datepicker__header {
+  background-color: #c7ad84;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  padding: 16px 0;
+}
+
+.custom-datepicker .react-datepicker__current-month {
+  color: #000;
+  font-weight: 700;
+  font-size: 1.1rem;
+  font-family: 'Cormorant Garamond', serif;
+  margin-bottom: 8px;
+}
+
+.custom-datepicker .react-datepicker__day-names {
+  margin-bottom: 8px;
+}
+
+.custom-datepicker .react-datepicker__day-name {
+  color: #000;
+  font-weight: 600;
+  font-size: 0.875rem;
+  width: 2.5rem;
+  line-height: 2.5rem;
+}
+
+.custom-datepicker .react-datepicker__navigation {
+  top: 18px;
+}
+
+.custom-datepicker .react-datepicker__navigation--previous {
+  left: 16px;
+  border-right-color: #000;
+}
+
+.custom-datepicker .react-datepicker__navigation--next {
+  right: 16px;
+  border-left-color: #000;
+}
+
+.custom-datepicker .react-datepicker__navigation:hover *::before {
+  border-color: #000;
+}
+
+.custom-datepicker .react-datepicker__month-container {
+  background-color: #fff;
+}
+
+.custom-datepicker .react-datepicker__month {
+  padding: 16px;
+}
+
+.custom-datepicker .react-datepicker__week {
+  display: flex;
+  justify-content: space-around;
+}
+
+.custom-datepicker .react-datepicker__day {
+  color: #374151;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  margin: 2px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-datepicker .react-datepicker__day:hover {
+  background-color: #f3f4f6;
+  color: #c7ad84;
+  transform: scale(1.05);
+}
+
+.custom-datepicker .react-datepicker__day--selected {
+  background-color: #c7ad84 !important;
+  color: #000 !important;
+  font-weight: 700;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(199, 173, 132, 0.3);
+}
+
+.custom-datepicker .react-datepicker__day--today {
+  background-color: #000;
+  color: #fff;
+  font-weight: 600;
+}
+
+.custom-datepicker .react-datepicker__day--today:hover {
+  background-color: #374151;
+  color: #fff;
+}
+
+.custom-datepicker .react-datepicker__day--disabled {
+  color: #d1d5db !important;
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.custom-datepicker .react-datepicker__day--disabled:hover {
+  background-color: transparent;
+  transform: none;
+}
+
+.custom-datepicker .react-datepicker__day--outside-month {
+  color: #d1d5db;
+}
+
+.custom-datepicker .react-datepicker__day--weekend {
+  color: #c7ad84;
+  font-weight: 600;
+}
+
+/* Custom input styling */
+.calendar-input {
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+  min-width: 200px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.calendar-input:focus {
+  border-color: #c7ad84;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(199, 173, 132, 0.1);
+}
+
+.calendar-input:hover {
+  border-color: #c7ad84;
+}
+
+/* Calendar container styling */
+.calendar-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  border: 2px solid #e5e7eb;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.calendar-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.calendar-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.calendar-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.selected-date-display {
+  background: linear-gradient(135deg, #c7ad84 0%, #b8a074 100%);
+  color: #000;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(199, 173, 132, 0.2);
+}

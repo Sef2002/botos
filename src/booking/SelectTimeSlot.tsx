@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import './calendar-styles.css';
 import { getAvailableTimeSlots } from '../lib/availability';
 
 /* ---------- TIPI ---------- */
@@ -372,20 +373,29 @@ const SelectTimeSlot = () => {
           <SectionHeader title="Seleziona Data e Orario" />
           
           {/* Date Picker */}
-          <div className="text-center">
-            <label className="block text-sm font-heading font-semibold text-black mb-3">
-              Scegli la data
-            </label>
-            <div className="inline-block">
+          <div className="calendar-container">
+            <div className="calendar-header">
+              <h3 className="calendar-title">Seleziona la Data</h3>
+              <p className="calendar-subtitle">Scegli il giorno per il tuo appuntamento</p>
+            </div>
+            
+            <div className="flex justify-center">
               <DatePicker
                 selected={date}
                 onChange={(date) => setDate(date!)}
                 dateFormat="dd/MM/yyyy"
                 minDate={new Date()}
-                className="p-3 border-2 border-gray-300 rounded-lg font-primary text-black focus:border-gold focus:outline-none transition-colors text-center"
+                className="calendar-input"
                 calendarClassName="custom-datepicker"
+                placeholderText="Clicca per selezionare una data"
               />
             </div>
+            
+            {date && (
+              <div className="selected-date-display">
+                Data selezionata: {format(date, 'EEEE, dd MMMM yyyy', { locale: { localize: { day: (n: number) => ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'][n], month: (n: number) => ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'][n] } } })}
+              </div>
+            )}
           </div>
 
           {/* Time Slots */}
